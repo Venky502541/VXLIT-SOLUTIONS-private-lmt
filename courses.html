@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RVNS Solutions – IT Courses</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RVNS Solutions – IT Courses</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+body {font-family:'Poppins',sans-serif;background:#f5f8fa;margin:0;padding-top:72px;}
+.navbar { background:#0a2239; }
+.navbar-brand { color:#16db93 !important;font-weight:700;font-size:1.6rem;}
+.nav-link { color:#dce3e8 !important; font-weight:600;}
+.nav-link:hover, .nav-link.active { color:#16db93 !important;}
+.section-title { text-align:center; font-weight:800; margin:30px 0;}
+.filter-bar { max-width:650px; margin:0 auto 20px auto;}
+.filter-bar input, .filter-bar select { border-radius:20px; padding:8px 16px;}
+.courses-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:20px;}
+.course-card { background:#fff; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.1); padding:20px; text-align:center;}
+.course-card:hover { transform:translateY(-5px); box-shadow:0 8px 25px rgba(0,0,0,0.15);}
+.course-card .icon { font-size:2.5rem; color:#16db93; margin-bottom:10px;}
+.course-title { font-size:1.2rem; font-weight:700;}
+.course-short-desc { font-size:0.95rem; min-height:48px; margin-bottom:10px;}
+.category-tag { font-size:0.85rem; background:#e0f6ee; padding:2px 10px; border-radius:15px; display:inline-block; margin-bottom:8px;}
+.btn-view { background:#2196f3; color:#fff; border-radius:20px; padding:5px 15px;}
+.btn-enroll { background:#16db93; color:#0a2239; border-radius:20px; padding:5px 15px;}
+.btn-view:hover { background:#1976c5;}
+.btn-enroll:hover { background:#0ebf7e; color:#fff;}
+.modal-header { background:#f5f8fa;}
+.modal-title { font-weight:700;}
+.footer-bg {background:#0a2239;color:#a7c7c4;font-size:.98rem;padding:2.5rem 1rem;}
+.footer-bg a {color:#16db93;text-decoration:none;transition:.3s;}
+.footer-bg a:hover {color:#72ead6;text-decoration:underline;}
+.footer-columns {display:flex;flex-wrap:wrap;justify-content:space-between;}
+.footer-column {flex:1 1 220px;padding:0 1rem;margin-bottom:1.5rem;}
+.footer-logo {height:60px;border-radius:50%;object-fit:cover;display:block;margin-bottom:12px;}
+.social-icons a {font-size:1.6rem;margin-right:12px;color:#16db93;transition:.3s;}
+.social-icons a:hover {color:#72ead6;}
+@media(max-width:768px){.footer-columns {flex-direction:column;}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">RVNS Solutions</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon" style="filter:invert(1);"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto text-uppercase">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="courses.html">Courses</a></li>
+        <li class="nav-item"><a class="nav-link" href="internships.html">Internships</a></li>
+        <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="development.html">Development</a></li>
+        <li class="nav-item"><a class="nav-link" href="career.html">Career</a></li>
+        <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
+        <li class="nav-item"><a class="nav-link" href="partners.html">Partners</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" data-aos="fade-up" style="
+  background: linear-gradient(rgba(22,219,147,0.85), rgba(10,34,57,0.85)), url('course-banner.jpg') center/cover no-repeat;
+  padding: 80px 0;
+">
+  <div class="container text-center text-white">
+    <h1 style="font-size: 2.8rem; font-weight:800;">Explore Our Professional Courses</h1>
+    <p style="max-width: 800px; margin: 15px auto 0; font-size: 1.2rem;">
+      Learn in-demand skills with expert mentors and real-world projects.
+    </p>
+  </div>
+</section>
+
+
+<!-- FILTER BAR + GRID -->
+<div class="container">
+  <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">All Our Premier IT Courses</h2>
+  <div class="filter-bar row" data-aos="fade-up" data-aos-delay="150">
+    <div class="col-md-7">
+      <input type="text" id="courseFilter" placeholder="🔍 Search..." class="form-control" oninput="filterCourses()" />
+    </div>
+    <div class="col-md-5">
+      <select class="form-select" id="catFilter" onchange="filterCourses()">
+        <option value="">All Categories</option>
+        <option>Programming</option>
+        <option>AI / Machine Learning</option>
+        <option>Cloud / DevOps</option>
+        <option>Web & Mobile</option>
+        <option>Data / Database</option>
+        <option>Cybersecurity</option>
+        <option>Networking</option>
+        <option>Automation</option>
+        <option>Design & Marketing</option>
+        <option>Enterprise / ERP</option>
+        <option>Game Development</option>
+      </select>
+    </div>
+  </div>
+  <div class="courses-grid" id="coursesGrid"></div>
+</div>
+
+<!-- COURSE DETAILS MODAL -->
+<div class="modal fade" id="courseDetailsModal" tabindex="-1">
+ <div class="modal-dialog modal-lg modal-dialog-centered">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5 class="modal-title" id="modalCourseTitle"></h5>
+       <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+     </div>
+     <div class="modal-body" id="modalCourseContent"></div>
+     <div class="modal-footer">
+       <button class="btn btn-enroll" id="modalEnrollBtn">Enroll In This Course</button>
+     </div>
+   </div>
+ </div>
+</div>
+
+<!-- ENROLL MODAL -->
+<div class="modal fade" id="enrollModal" tabindex="-1">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header"><h5 class="modal-title">Course Enrollment</h5>
+       <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+     <form method="post" action="enroll.php" autocomplete="off">
+       <div class="modal-body">
+         <input type="hidden" id="formCourse" name="course"/>
+         <div class="mb-3"><label>Full Name *</label><input type="text" name="fullName" class="form-control" required></div>
+         <div class="mb-3"><label>Email *</label><input type="email" name="email" class="form-control" required></div>
+         <div class="mb-3"><label>Phone *</label><input type="tel" name="phone" pattern="[0-9]{10}" maxlength="10" class="form-control" required></div>
+         <div class="mb-3"><label>College *</label><input type="text" name="college" class="form-control" required></div>
+         <div class="mb-3"><label>Year *</label>
+           <select name="year" class="form-select" required>
+             <option value="">Select Year</option><option>1st Year</option>
+             <option>2nd Year</option><option>3rd Year</option>
+             <option>4th Year</option><option>Graduated</option>
+           </select>
+         </div>
+         <div class="mb-3"><label>Remarks</label><textarea name="remarks" class="form-control"></textarea></div>
+       </div>
+       <div class="modal-footer d-grid">
+         <button type="submit" class="btn btn-enroll">Submit Enrollment</button>
+       </div>
+     </form>
+   </div>
+ </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer-bg">
+  <div class="container">
+    <div class="footer-columns">
+      <div class="footer-column text-center text-md-start">
+        <img src="logo.jpg" alt="RVNS Solutions" class="footer-logo" />
+        <p class="fst-italic">Empowering your IT journey with skills, projects, and innovation.</p>
+      </div>
+      <div class="footer-column">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="about.html" class="footer-link">About Us</a></li>
+          <li><a href="courses.html" class="footer-link">Courses</a></li>
+          <li><a href="internships.html" class="footer-link">Internships</a></li>
+          <li><a href="projects.html" class="footer-link">Projects</a></li>
+          <li><a href="contact.html" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h5>Contact Us</h5>
+        <p><i class="bi bi-geo-alt-fill me-2"></i>Adoni, Andhra Pradesh, India</p>
+        <p><i class="bi bi-telephone-fill me-2"></i><a href="tel:+918328051076" class="footer-link">+91 8328051076</a></p>
+        <p><i class="bi bi-envelope-fill me-2"></i><a href="mailto:rvnssolutions@gmail.com" class="footer-link">rvnssolutions@gmail.com</a></p>
+      </div>
+      <div class="footer-column text-center text-md-start">
+        <h5>Subscribe to Our Newsletter</h5>
+        <form onsubmit="event.preventDefault();alert('Subscribed!');" style="max-width:300px;margin:auto;">
+          <input type="email" placeholder="Enter your email" required class="form-control mb-2" />
+          <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+        </form>
+        <div class="social-icons mt-3">
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-twitter"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-youtube"></i></a>
+          <a href="#"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// ===== FULL 26-COURSE ARRAY START =====
+const courses = [
+{
+  icon:'<i class="fas fa-terminal"></i>',
+  category:'Programming',
+  name:'C Programming',
+  overview:'C is the foundational language for systems, embedded, and high-performance applications. This course takes you from basics to advanced memory and file handling.',
+  syllabus:[
+    { module:"Introduction & Setup", topics:["History of C","Installing compilers","Compiling your first program"] },
+    { module:"Variables & Data Types", topics:["Primitive types","Constants","Operators","Type conversions"] },
+    { module:"Control Flow", topics:["if/else","switch","for/while/do-while","break/continue"] },
+    { module:"Functions", topics:["Declaration/Definition","Recursion","Scope and lifetime"] },
+    { module:"Pointers & Memory", topics:["Pointer basics","Pointer arithmetic","Dynamic allocation"] },
+    { module:"Arrays & Strings", topics:["1D and 2D arrays","String handling","String library functions"] },
+    { module:"Structures, Enums, Unions", topics:["Struct creation","Nesting","Enums","Typedef"] },
+    { module:"File Handling", topics:["Text file operations","Binary file IO","Error handling"] },
+    { module:"Preprocessor", topics:["Macros","#define","#include","Conditional compilation"] },
+    { module:"Debugging", topics:["gdb basics","Common errors","Best practices"] }
+  ],
+  roadmap:[
+    "Learn syntax and data types",
+    "Control program flow",
+    "Write modular code with functions",
+    "Master memory management and pointers",
+    "Handle files and I/O",
+    "Complete a real-world console project"
+  ],
+  careers:[
+    "Systems Programmer","Embedded Engineer","IoT Developer","Firmware Engineer"
+  ]
+},
+{
+  icon:'<i class="fas fa-code"></i>',
+  category:'Programming',
+  name:'C++ Programming',
+  overview:'Learn C++ from syntax basics to advanced OOP and STL for software, gaming, and enterprise systems.',
+  syllabus:[
+    { module:"Setup & Syntax", topics:["IDE/Compiler setup","Hello World","Namespaces"] },
+    { module:"OOP Basics", topics:["Classes & Objects","Constructors/Destructors","Encapsulation"] },
+    { module:"Inheritance & Polymorphism", topics:["Types of inheritance","Virtual functions","Abstract classes"] },
+    { module:"Operator Overloading", topics:["Arithmetic operator overloading","Stream operators"] },
+    { module:"Templates & STL", topics:["Function templates","Class templates","Vectors, maps, sets"] },
+    { module:"Memory Management", topics:["Pointers","Dynamic allocation","Smart pointers"] },
+    { module:"File Handling", topics:["Text & binary IO","File streams","Error handling"] }
+  ],
+  roadmap:[
+    "Learn syntax and procedural basics",
+    "Master OOP concepts",
+    "Explore STL and templates",
+    "Work with memory and pointers",
+    "Build fully OOP applications"
+  ],
+  careers:[
+    "Software Engineer","Game Developer","System Architect","Quant Developer"
+  ]
+},
+{
+  icon:'<i class="fas fa-brain"></i>',
+  category:'AI / Machine Learning',
+  name:'Generative AI',
+  overview:'Covers Large Language Models, text/image generation, prompt optimization, and AI integration.',
+  syllabus:[
+    { module:"GenAI Basics", topics:["What is Generative AI","Transformer architecture","Use cases"] },
+    { module:"Text Generation", topics:["OpenAI GPT","Google Gemini","Fine-tuning models"] },
+    { module:"Image Generation", topics:["DALL-E","Stable Diffusion","ControlNet"] },
+    { module:"Prompt Engineering", topics:["Few-shot","Chain-of-thought","Context control"] },
+    { module:"Deployment", topics:["API integration","Building GenAI apps","Ethics in AI use"] }
+  ],
+  roadmap:[
+    "Understand GenAI concepts",
+    "Master prompting",
+    "Build text/image generation apps",
+    "Integrate into real projects",
+    "Deploy and monitor AI solutions"
+  ],
+  careers:[
+    "AI Engineer","Prompt Engineer","GenAI Developer","AI Product Manager"
+  ]
+},
+{
+  icon:'<i class="fas fa-microchip"></i>',
+  category:'AI / Machine Learning',
+  name:'Prompt Engineering',
+  overview:'Learn to design effective prompts for LLMs, improving output accuracy and usefulness.',
+  syllabus:[
+    { module:"LLM Basics", topics:["What are LLMs","Prompt structure","Context windows"] },
+    { module:"Prompt Types", topics:["Instruction prompts","Few-shot","Zero-shot"] },
+    { module:"Optimization", topics:["Temperature settings","Role prompting","Iterative refinement"] },
+    { module:"Evaluation", topics:["A/B testing prompts","Output validation"] }
+  ],
+  roadmap:[
+    "Learn LLM fundamentals",
+    "Try different prompting styles",
+    "Develop reusable prompt templates",
+    "Automate and optimize prompting"
+  ],
+  careers:[
+    "Prompt Engineer","AI Integration Specialist","Automation Analyst"
+  ]
+},
+{
+  icon:'<i class="fab fa-java"></i>',
+  category:'Programming',
+  name:'Java Programming',
+  overview:'From basic Java syntax to advanced frameworks — object-oriented, portable, and enterprise-ready.',
+  syllabus:[
+    { module:"Java Basics", topics:["Setup JDK/IDE","Syntax","Data types"] },
+    { module:"OOP", topics:["Classes, objects","Inheritance","Polymorphism","Encapsulation"] },
+    { module:"Collections & Generics", topics:["List, Set, Map","Generic classes"] },
+    { module:"Exception Handling", topics:["try/catch","User-defined exceptions"] },
+    { module:"File IO", topics:["Streams","Serialization"] },
+    { module:"Multithreading", topics:["Thread class","Runnable","Synchronization"] }
+  ],
+  roadmap:[
+    "Understand syntax and OOP basics",
+    "Master core APIs",
+    "Learn concurrency",
+    "Build console & GUI projects",
+    "Intro to frameworks (Spring)"
+  ],
+  careers:[
+    "Java Developer","Backend Engineer","Android Developer"
+  ]
+},
+{
+  icon:'<i class="fab fa-python"></i>',
+  category:'Programming',
+  name:'Python Programming',
+  overview:'Python is a versatile language widely used in web, data science, automation, and AI. This course covers everything from basics to advanced features.',
+  syllabus:[
+    { module:"Python Basics", topics:["Syntax","Data types","Variables","Operators"] },
+    { module:"Control Flow", topics:["Conditional statements","Loops","Comprehensions"] },
+    { module:"Functions & Modules", topics:["Defining functions","Lambda functions","Importing modules"] },
+    { module:"Data Structures", topics:["Lists","Tuples","Sets","Dictionaries"] },
+    { module:"File Handling", topics:["Opening/closing files","Reading/writing text & CSV files"] },
+    { module:"Error Handling", topics:["Try/except blocks","Raising exceptions"] },
+    { module:"Object Oriented Programming", topics:["Classes & objects","Inheritance","Polymorphism"] },
+    { module:"Working with Libraries", topics:["NumPy","Pandas","Matplotlib basics"] }
+  ],
+  roadmap:[
+    "Begin with syntax and basic programming",
+    "Understand control flow and functions",
+    "Master data structures",
+    "Learn file and error handling",
+    "Dive into OOP and external libraries"
+  ],
+  careers:[
+    "Python Developer",
+    "Automation Engineer",
+    "Data Analyst",
+    "AI/ML Developer"
+  ]
+},
+{
+  icon:'<i class="fas fa-laptop-code"></i>',
+  category:'Web & Mobile',
+  name:'Full Stack Web Development',
+  overview:'Learn front-end and back-end web development using HTML, CSS, JavaScript, Node.js, Express, and databases to build complete web apps.',
+  syllabus:[
+    { module:"HTML & CSS", topics:["Page structure","Styling","Responsive design"] },
+    { module:"JavaScript Basics", topics:["Syntax","DOM manipulation","Events"] },
+    { module:"Front-end Frameworks", topics:["React basics","Component model","State management"] },
+    { module:"Node.js & Express", topics:["Server setup","Routing","Middleware"] },
+    { module:"Databases", topics:["MongoDB","CRUD operations","Mongoose"] },
+    { module:"Authentication & Security", topics:["JWT","OAuth","Security Best Practices"] },
+    { module:"Deployment", topics:["Hosting","Using cloud platforms"] }
+  ],
+  roadmap:[
+    "Start with HTML/CSS fundamentals",
+    "Master JavaScript basics",
+    "Learn React front-end framework",
+    "Build server-side with Node & Express",
+    "Use databases and authentication",
+    "Deploy your application"
+  ],
+  careers:[
+    "Full Stack Developer",
+    "Front-end Developer",
+    "Back-end Developer",
+    "Web Application Engineer"
+  ]
+},
+{
+  icon:'<i class="fas fa-mobile-alt"></i>',
+  category:'Web & Mobile',
+  name:'Mobile App Development',
+  overview:'Develop native and cross-platform mobile applications with Java/Kotlin for Android, Swift for iOS, and frameworks like Flutter.',
+  syllabus:[
+    { module:"Mobile Development Basics", topics:["Mobile OS overview","App lifecycle","UI components"] },
+    { module:"Android Development", topics:["Java/Kotlin basics","Layouts","Activities and intents"] },
+    { module:"iOS Development", topics:["Swift basics","Xcode","Storyboard"] },
+    { module:"Cross-platform with Flutter", topics:["Dart basics","Widgets","State management"] },
+    { module:"APIs & Networking", topics:["REST APIs","JSON parsing","Firebase integration"] },
+    { module:"Publishing", topics:["App Store guidelines","Play Store publishing"] }
+  ],
+  roadmap:[
+    "Understand mobile platform basics",
+    "Build Android apps with Kotlin",
+    "Learn iOS app development with Swift",
+    "Create cross-platform apps with Flutter",
+    "Integrate data and APIs",
+    "Publish your application"
+  ],
+  careers:[
+    "Mobile App Developer",
+    "Flutter Developer",
+    "Android Developer",
+    "iOS Developer"
+  ]
+},
+{
+  icon:'<i class="fas fa-cloud"></i>',
+  category:'Cloud / DevOps',
+  name:'Cloud Computing & DevOps',
+  overview:'Explore cloud services and DevOps methodologies to enable continuous integration and delivery using AWS, Docker, Kubernetes, and Jenkins.',
+  syllabus:[
+    { module:"Cloud Fundamentals", topics:["Cloud concepts","Service models","AWS introduction"] },
+    { module:"AWS Services", topics:["EC2","S3","RDS","Lambda"] },
+    { module:"Containerization", topics:["Docker basics","Images & containers","Docker Compose"] },
+    { module:"Orchestration", topics:["Kubernetes architecture","Pods & deployments","Services"] },
+    { module:"CI/CD Pipelines", topics:["Jenkins setup","Pipeline scripting","Automation"] },
+    { module:"Monitoring & Logging", topics:["CloudWatch","Prometheus","Grafana"] }
+  ],
+  roadmap:[
+    "Understand cloud basics and AWS",
+    "Master containerization with Docker",
+    "Learn orchestration with Kubernetes",
+    "Build CI/CD pipelines",
+    "Implement monitoring and logging"
+  ],
+  careers:[
+    "Cloud Engineer",
+    "DevOps Engineer",
+    "Site Reliability Engineer",
+    "Infrastructure Engineer"
+  ]
+},
+{
+  icon:'<i class="fas fa-database"></i>',
+  category:'Data / Database',
+  name:'Database Management Systems',
+  overview:'Learn core database concepts, SQL querying, normalization, and NoSQL databases for managing structured and unstructured data effectively.',
+  syllabus:[
+    { module:"Database Fundamentals", topics:["DBMS concepts","ER diagrams","Normalization"] },
+    { module:"SQL Basics", topics:["SELECT queries","Joins","Subqueries","Functions"] },
+    { module:"Advanced SQL", topics:["Indexes","Stored procedures","Triggers"] },
+    { module:"NoSQL Databases", topics:["MongoDB","Cassandra","Key-Value stores"] },
+    { module:"Transactions & Concurrency", topics:["ACID properties","Locking","Isolation levels"] },
+    { module:"Backup & Recovery", topics:["Backup strategies","Replication","Recovery techniques"] }
+  ],
+  roadmap:[
+    "Learn DBMS fundamentals",
+    "Practice SQL querying",
+    "Understand advanced database topics",
+    "Explore NoSQL alternatives",
+    "Manage transactions and backups"
+  ],
+  careers:[
+    "Database Administrator",
+    "Data Engineer",
+    "Backend Developer",
+    "Big Data Specialist"
+  ]
+},
+{
+  icon:'<i class="fas fa-network-wired"></i>',
+  category:'Networking',
+  name:'Networking Fundamentals',
+  overview:'Understand networking basics, protocols, routing, switching, security, and wireless technologies for effective communication networks.',
+  syllabus:[
+    { module:"Networking Basics", topics:["OSI & TCP/IP models","IP addressing","Subnetting"] },
+    { module:"Protocols", topics:["HTTP/S","FTP","SMTP","DNS"] },
+    { module:"Routing & Switching", topics:["Switch basics","Routing protocols","VLANs"] },
+    { module:"Wireless Networks", topics:["Wi-Fi standards","Bluetooth","Mobile networks"] },
+    { module:"Network Security", topics:["Firewalls","VPNs","Intrusion detection"] },
+    { module:"Troubleshooting", topics:["Ping","Traceroute","Network analyzers"] }
+  ],
+  roadmap:[
+    "Master networking models and addressing",
+    "Learn key protocols",
+    "Understand routing and switching",
+    "Explore wireless technologies",
+    "Implement security and troubleshooting"
+  ],
+  careers:[
+    "Network Engineer",
+    "Systems Administrator",
+    "Network Security Analyst",
+    "Wireless Network Specialist"
+  ]
+},
+{
+  icon:'<i class="fas fa-shield-alt"></i>',
+  category:'Cybersecurity',
+  name:'Cybersecurity',
+  overview:'Gain skills in security principles, threat analysis, defensive techniques, cryptography, and ethical hacking to protect information systems.',
+  syllabus:[
+    { module:"Security Fundamentals", topics:["CIA triad","Policies","Risk management"] },
+    { module:"Cryptography", topics:["Symmetric & asymmetric","Hashing","Digital signatures"] },
+    { module:"Network Security", topics:["Firewall concepts","IDS/IPS","VPNs"] },
+    { module:"Vulnerability Assessment", topics:["Penetration testing","Scanning tools","Exploitation"] },
+    { module:"Ethical Hacking", topics:["Reconnaissance","Social engineering","Exploitation techniques"] },
+    { module:"Security Operations", topics:["Incident response","Forensics","Compliance"] }
+  ],
+  roadmap:[
+    "Understand security basics",
+    "Learn cryptographic protocols",
+    "Protect networks",
+    "Conduct vulnerability assessments",
+    "Practice ethical hacking and response"
+  ],
+  careers:[
+    "Security Analyst",
+    "Penetration Tester",
+    "Information Security Engineer",
+    "Cybersecurity Consultant"
+  ]
+},
+{
+  icon:'<i class="fas fa-robot"></i>',
+  category:'Automation',
+  name:'Robotic Process Automation (RPA)',
+  overview:'Learn automation of business processes using RPA tools like UiPath, Blue Prism, and Automation Anywhere.',
+  syllabus:[
+    { module:"RPA Basics", topics:["Introduction","Automation types","Use cases"] },
+    { module:"UiPath Studio", topics:["Workflow creation","Variables","Selectors"] },
+    { module:"Automation Anywhere", topics:["Bots","Control room","Task editor"] },
+    { module:"Blue Prism", topics:["Objects and processes","Work queues"] },
+    { module:"Real World Projects", topics:["Invoice processing","Data migration"] }
+  ],
+  roadmap:[
+    "Learn RPA fundamentals",
+    "Practice with leading tools",
+    "Build automation workflows",
+    "Implement real-world bots"
+  ],
+  careers:[
+    "RPA Developer",
+    "Automation Consultant",
+    "Business Analyst"
+  ]
+},
+{
+  icon:'<i class="fas fa-chart-line"></i>',
+  category:'Design & Marketing',
+  name:'Digital Marketing',
+  overview:'Covers SEO, SEM, content marketing, social media, and analytics to promote brands effectively in the digital domain.',
+  syllabus:[
+    { module:"Marketing Fundamentals", topics:["Marketing mix","Buyer personas","Channels"] },
+    { module:"SEO", topics:["Keyword research","On-page SEO","Link building"] },
+    { module:"Content Marketing", topics:["Content creation","Distribution","Email marketing"] },
+    { module:"Social Media Marketing", topics:["Platforms overview","Ad campaigns","Engagement"] },
+    { module:"Analytics", topics:["Google Analytics","Conversion tracking"] }
+  ],
+  roadmap:[
+    "Understand marketing basics",
+    "Master SEO and content",
+    "Manage social media campaigns",
+    "Analyze and optimize"
+  ],
+  careers:[
+    "Digital Marketer",
+    "SEO Specialist",
+    "Content Strategist",
+    "Social Media Manager"
+  ]
+},
+{
+  icon:'<i class="fas fa-gamepad"></i>',
+  category:'Game Development',
+  name:'Game Development',
+  overview:'Design and develop interactive games using engines like Unity and Unreal, covering graphics, physics, and scripting.',
+  syllabus:[
+    { module:"Introduction to Game Dev", topics:["Game types","Development pipeline"] },
+    { module:"Unity Basics", topics:["Editor UI","Game objects","Scripting C#"] },
+    { module:"Unreal Engine", topics:["Blueprints","Level design","Materials"] },
+    { module:"Physics & AI", topics:["Collision","Pathfinding","Behavior trees"] },
+    { module:"Publishing", topics:["Optimization","Platform release"] }
+  ],
+  roadmap:[
+    "Learn game development concepts",
+    "Work with Unity and Unreal",
+    "Develop game mechanics",
+    "Add AI and physics",
+    "Publish games"
+  ],
+  careers:[
+    "Game Developer",
+    "Level Designer",
+    "Gameplay Programmer",
+    "Game Tester"
+  ]
+},
+{
+  icon:'<i class="fas fa-project-diagram"></i>',
+  category:'AI / Machine Learning',
+  name:'Artificial Neural Networks',
+  overview:'Understand and implement ANN architectures to solve real-world problems in pattern recognition, computer vision, and NLP.',
+  syllabus:[
+    { module:"ANN Basics", topics:["Neurons","Activation functions","Network layers"] },
+    { module:"Training & Optimization", topics:["Backpropagation","Gradient descent"] },
+    { module:"CNNs", topics:["Convolution layers","Pooling","Applications"] },
+    { module:"RNNs & LSTMs", topics:["Sequence modeling","Time series"] },
+    { module:"Practical Projects", topics:["Image classification","Text generation"] }
+  ],
+  roadmap:[
+    "Learn neural network fundamentals",
+    "Train and optimize models",
+    "Explore CNN and RNN architectures",
+    "Apply to real data projects"
+  ],
+  careers:[
+    "ML Engineer",
+    "Deep Learning Specialist",
+    "AI Researcher"
+  ]
+},
+{
+  icon:'<i class="fas fa-database"></i>',
+  category:'Data / Database',
+  name:'Big Data Analytics',
+  overview:'Learn processing, storage, and analysis of huge datasets using Hadoop, Spark, NoSQL, and visualization tools.',
+  syllabus:[
+    { module:"Big Data Concepts", topics:["Volume, Velocity, Variety"] },
+    { module:"Hadoop Ecosystem", topics:["HDFS","MapReduce","YARN"] },
+    { module:"Apache Spark", topics:["RDDs","DataFrames","Spark SQL"] },
+    { module:"NoSQL Databases", topics:["HBase","Cassandra"] },
+    { module:"Data Visualization", topics:["Tableau","Power BI"] }
+  ],
+  roadmap:[
+    "Understand big data fundamentals",
+    "Work with Hadoop & Spark",
+    "Use NoSQL databases",
+    "Create data visualizations"
+  ],
+  careers:[
+    "Big Data Engineer",
+    "Data Analyst",
+    "Business Intelligence Specialist"
+  ]
+},
+{
+  icon:'<i class="fas fa-user-secret"></i>',
+  category:'Cybersecurity',
+  name:'Ethical Hacking & Pen Testing',
+  overview:'Learn to identify vulnerabilities and test networks and applications securely using Kali Linux and various hacking tools.',
+  syllabus:[
+    { module:"Ethical Hacking Intro", topics:["Legal issues","Hacking methodologies"] },
+    { module:"Reconnaissance", topics:["Footprinting","Scanning"] },
+    { module:"Exploitation", topics:["Vulnerability exploits","Buffer overflows"] },
+    { module:"Post Exploitation", topics:["Maintaining access","Covering tracks"] },
+    { module:"Reporting", topics:["Writing reports","Mitigation strategies"] }
+  ],
+  roadmap:[
+    "Understand ethical hacking framework",
+    "Practice reconnaissance and scanning",
+    "Master exploitation techniques",
+    "Conduct post exploitation tasks",
+    "Write professional reports"
+  ],
+  careers:[
+    "Ethical Hacker",
+    "Penetration Tester",
+    "Security Consultant"
+  ]
+},
+{
+  icon:'<i class="fas fa-robot"></i>',
+  category:'AI / Machine Learning',
+  name:'Natural Language Processing (NLP)',
+  overview:'Learn techniques to process and analyze human language data using machine learning and deep learning models.',
+  syllabus:[
+    { module:"NLP Fundamentals", topics:["Tokenization","POS tagging","Parsing"] },
+    { module:"Text Representation", topics:["Bag of Words","TF-IDF","Word embeddings"] },
+    { module:"Sequence Models", topics:["RNNs","LSTMs","Transformers"] },
+    { module:"Applications", topics:["Sentiment analysis","Chatbots"] },
+    { module:"Advanced Topics", topics:["BERT","GPT"] }
+  ],
+  roadmap:[
+    "Understand basic NLP techniques",
+    "Learn text vectorization",
+    "Use sequence models",
+    "Build NLP applications",
+    "Explore state-of-the-art models"
+  ],
+  careers:[
+    "NLP Engineer",
+    "Data Scientist",
+    "AI Researcher"
+  ]
+},
+{
+  icon:'<i class="fas fa-cogs"></i>',
+  category:'Enterprise / ERP',
+  name:'SAP ERP',
+  overview:'Learn ERP principles and SAP modules covering finance, logistics, and supply chain management for enterprise solutions.',
+  syllabus:[
+    { module:"ERP Overview", topics:["Business processes","ERP concepts"] },
+    { module:"SAP Introduction", topics:["SAP architecture","Navigation"] },
+    { module:"Finance Module", topics:["General Ledger","Accounts Payable"] },
+    { module:"Logistics Module", topics:["Material Management","Sales & Distribution"] },
+    { module:"Supply Chain", topics:["Inventory management","Production planning"] }
+  ],
+  roadmap:[
+    "Learn ERP fundamentals",
+    "Understand SAP platform",
+    "Master finance and logistics modules",
+    "Explore supply chain workflows"
+  ],
+  careers:[
+    "SAP Consultant",
+    "Business Analyst",
+    "ERP Manager"
+  ]
+}
+
+];
+// ... continue similarly for the remaining 21 courses ...
+
+// ===== END COURSES ARRAY =====
+
+// ==== Rendering Logic ====
+function renderCourses(list) {
+  const grid = document.getElementById('coursesGrid');
+  grid.innerHTML = list.map((c,idx)=>`
+    <div class="course-card">
+      <div class="icon">${c.icon}</div>
+      <div class="category-tag">${c.category}</div>
+      <div class="course-title">${c.name}</div>
+      <div class="course-short-desc">${c.overview.substring(0,80)}...</div>
+      <button class="btn btn-view" onclick="showCourse(${idx})">View Course</button>
+      <button class="btn btn-enroll" onclick="openEnroll('${c.name}')">Enroll</button>
+    </div>`).join('');
+}
+
+function filterCourses(){
+  const term=document.getElementById('courseFilter').value.toLowerCase(),
+        cat=document.getElementById('catFilter').value;
+  let res=courses;
+  if(cat) res=res.filter(c=>c.category===cat);
+  if(term) res=res.filter(c=>c.name.toLowerCase().includes(term) || c.overview.toLowerCase().includes(term));
+  renderCourses(res);
+}
+
+function showCourse(idx) {
+  const c=courses[idx];
+  let html = `<h6>Overview</h6><p>${c.overview}</p>`;
+  html += `<h6>Detailed Syllabus</h6><ul>${c.syllabus.map(s=>`<li><strong>${s.module}:</strong> ${s.topics.join(", ")}</li>`).join('')}</ul>`;
+  html += `<h6>Roadmap</h6><ol>${c.roadmap.map(r=>`<li>${r}</li>`).join('')}</ol>`;
+  html += `<h6>Career Opportunities</h6><ul>${c.careers.map(job=>`<li>${job}</li>`).join('')}</ul>`;
+  document.getElementById('modalCourseTitle').textContent = c.name;
+  document.getElementById('modalCourseContent').innerHTML = html;
+  new bootstrap.Modal(document.getElementById('courseDetailsModal')).show();
+  document.getElementById('modalEnrollBtn').onclick=function(){
+    openEnroll(c.name);
+    bootstrap.Modal.getInstance(document.getElementById('courseDetailsModal')).hide();
+  };
+}
+
+function openEnroll(courseName){
+  document.getElementById('formCourse').value = courseName;
+  new bootstrap.Modal(document.getElementById('enrollModal')).show();
+}
+
+renderCourses(courses);
+</script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({
+  duration: 1000, // 1 second animations
+  once: true      // run only once
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// Render courses with AOS zoom effect
+function renderCourses(list) {
+  const grid = document.getElementById('coursesGrid');
+  grid.innerHTML = list.map((c, idx) => `
+    <div class="course-card" data-aos="zoom-in" data-aos-delay="${idx * 100}">
+      <div class="icon">${c.icon}</div>
+      <div class="category-tag">${c.category}</div>
+      <div class="course-title">${c.name}</div>
+      <div class="course-short-desc">${c.overview.substring(0,80)}...</div>
+      <button class="btn btn-view" onclick="showCourse(${idx})">View Course</button>
+      <button class="btn btn-enroll" onclick="openEnroll('${c.name}')">Enroll</button>
+    </div>`).join('');
+}
+
+function filterCourses(){
+  const term=document.getElementById('courseFilter').value.toLowerCase(),
+        cat=document.getElementById('catFilter').value;
+  let res=courses;
+  if(cat) res=res.filter(c=>c.category===cat);
+  if(term) res=res.filter(c=>c.name.toLowerCase().includes(term) || c.overview.toLowerCase().includes(term));
+  renderCourses(res);
+}
+
+function showCourse(idx) {
+  const c=courses[idx];
+  let html = `<h6>Overview</h6><p>${c.overview}</p>`;
+  html += `<h6>Detailed Syllabus</h6><ul>${c.syllabus.map(s=>`<li><strong>${s.module}:</strong> ${s.topics.join(", ")}</li>`).join('')}</ul>`;
+  html += `<h6>Roadmap</h6><ol>${c.roadmap.map(r=>`<li>${r}</li>`).join('')}</ol>`;
+  html += `<h6>Career Opportunities</h6><ul>${c.careers.map(job=>`<li>${job}</li>`).join('')}</ul>`;
+  document.getElementById('modalCourseTitle').textContent = c.name;
+  document.getElementById('modalCourseContent').innerHTML = html;
+  new bootstrap.Modal(document.getElementById('courseDetailsModal')).show();
+  document.getElementById('modalEnrollBtn').onclick=function(){
+    openEnroll(c.name);
+    bootstrap.Modal.getInstance(document.getElementById('courseDetailsModal')).hide();
+  };
+}
+
+function openEnroll(courseName){
+  document.getElementById('formCourse').value = courseName;
+  new bootstrap.Modal(document.getElementById('enrollModal')).show();
+}
+
+// Initial render
+renderCourses(courses);
+</script>
+
+<!-- AOS Animation JS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({
+  duration: 1000,
+  once: true
+});
+</script>
+
+</body>
+</html>
+
+</body>
+</html>

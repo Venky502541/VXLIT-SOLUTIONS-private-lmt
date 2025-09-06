@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RVNS Solutions – IT Training, Internships, Projects & Development</title>
+<meta name="description" content="Transform your future with expert IT training, internships, live projects, custom development, and career placement support." />
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<!-- AOS Animation -->
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+<!-- Bootstrap Icons & FontAwesome -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
+
+<style>
+body { font-family: 'Poppins', sans-serif; background:#f5f8fa; color: #1d2d50; margin:0; }
+.navbar { background: #0a2239; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+.navbar-brand { color: #16db93 !important; font-weight: 700; font-size: 1.6rem; }
+.nav-link { color: #dce3e8 !important; font-weight: 600; }
+.nav-link:hover, .nav-link.active { color: #16db93 !important; }
+
+.hero-section { min-height: 44vh; display:flex; align-items:center; justify-content:center; text-align:center; background:linear-gradient(135deg, #0a2239, #16db93); color:white; padding: 0 1.5rem;}
+.hero-content h1 { font-weight:850; font-size:2.3rem; margin-bottom:1.1rem; }
+.animated-text { font-weight:700; font-size:1.25rem; min-height:44px; color:#ffeb3b; margin-bottom:1.2rem; }
+.hero-content p { font-size:1.1rem; margin-bottom:2rem; }
+.btn-explore, .btn-contact { background:#16db93; padding:14px 42px; border:none; border-radius:30px; color:#0a2239; font-weight:700; font-size:1.12rem; box-shadow:0 5px 16px #0a223980; transition:.18s; }
+.btn-explore:hover, .btn-contact:hover { background:#12b880; color:white; }
+.btn-contact { background: none; border:2px solid #16db93; color:white; margin-left:8px;}
+.btn-contact:hover { background:#16db93; color:#0a2239;}
+
+.stats-section { background:#dff6f0; padding:3rem 1rem; }
+.stats-box { background:white; border-radius:12px; padding:2rem 1rem; box-shadow:0 2px 12px rgba(0,0,0,.05); text-align:center; transition: transform 0.3s; }
+.stats-box:hover { transform:translateY(-8px); box-shadow:0 8px 30px rgba(22,219,147,0.13);}
+.stats-box h2 { color:#16db93; font-weight:900; font-size:2rem; }
+.stats-box p { font-weight:600; color:#1d2d50; }
+
+.section-title { font-weight:800; color:#0a2239; text-align:center; margin-bottom:2rem; }
+
+.card { border:none; border-radius:16px; box-shadow:0 4px 14px rgba(0,0,0,.07); padding:1.5rem; text-align:center; height:100%; transition: box-shadow 0.3s ease, transform 0.3s;}
+.card:hover { box-shadow:0 8px 28px rgba(0,0,0,.09); transform: translateY(-6px);}
+.card-title { color:#16db93; font-weight:700; margin-bottom:0.75rem;}
+.feature-icon { font-size:2.3rem; margin-bottom:0.85rem; }
+.icon-java{color:#f89820;} .icon-data{color:#4b6cff;} .icon-web{color:#4caf50;}
+.icon-internship{color:#a332e3;} .icon-project{color:#e91e63;}
+.icon-dev-web{color:#2196f3;} .icon-dev-mobile{color:#ff5722;} .icon-dev-cloud{color:#009688;}
+
+.section-btn {
+    margin: 32px auto 0 auto;
+    display: flex;
+    justify-content: center;
+}
+.section-btn .btn-main {
+    background:#16db93;
+    color:#0a2239;
+    border:none;
+    border-radius:30px;
+    font-weight:700;
+    font-size:1rem;
+    padding:12px 36px;
+    box-shadow:0 2px 10px #16db9340;
+    transition:0.18s;
+}
+.section-btn .btn-main:hover {
+    background: #12b880;
+    color: #fff;
+}
+
+.best-feature { background:#dff6f0; border-radius:16px; padding:1.4rem; display:flex; align-items:center; box-shadow:0 4px 12px #16db9325; cursor: default; height:100%; }
+.best-feature i { font-size:2rem; color:#16db93; margin-right:0.6rem; }
+.best-feature div h6 { font-weight:700; color:#0a2239; font-size:1.13rem; margin-bottom:0.18rem;}
+.best-feature div small { color:#4a6572; font-weight:600; font-size:0.97rem; }
+
+.faq-section { background:#f8f9fa; padding:3rem 1rem; }
+.faq-item { margin-bottom:1rem;}
+.faq-item h6 { cursor:pointer; color:#0a2239;}
+.faq-item p { margin-top:0.3rem; color:#3a5873;}
+
+.footer-bg {
+  background-color: #0a2239;
+  color: #a7c7c4;
+  font-size: 0.95rem;
+}
+.footer-link {
+  color: #16db93;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-link:hover,
+.footer-link:focus {
+  color: #72ead6;
+  text-decoration: underline;
+}
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 2rem 0;
+}
+.footer-column {
+  flex: 1 1 220px;
+  padding: 0 1rem;
+  margin-bottom: 1.5rem;
+}
+.footer-logo {
+  height: 50px;
+  margin-bottom: 1rem;
+}
+.newsletter-form {
+  display: flex;
+  max-width: 300px;
+}
+.newsletter-form input[type="email"] {
+  flex-grow: 1;
+  padding: 8px 12px;
+  border-radius: 30px 0 0 30px;
+  border: none;
+  font-size: 0.9rem;
+}
+.newsletter-form button {
+  background-color: #16db93;
+  border: none;
+  color: #0a2239;
+  padding: 8px 16px;
+  border-radius: 0 30px 30px 0;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.newsletter-form button:hover {
+  background-color: #12b880;
+}
+.social-icons a {
+  font-size: 1.6rem;
+  margin-right: 12px;
+  color: #16db93;
+  transition: color 0.3s ease;
+}
+.social-icons a:hover {
+  color: #72ead6;
+}
+
+.call-float, .wa-float { position:fixed; right:20px; width:56px; height:56px; display:flex; align-items:center; justify-content:center; border-radius:50%; color:white; font-size:1.4rem; z-index:1000; cursor:pointer;}
+.call-float { bottom:20px; background:#16db93; box-shadow:0 5px 20px #16db9380;}
+.call-float:hover { background:#12b880;}
+.wa-float { bottom:90px; background:#25d366; box-shadow:0 6px 26px #25d366bb;}
+.wa-float:hover { background:#1ebe5d;}
+
+@media(max-width:768px){
+.hero-section { min-height:36vh; }
+.hero-content h1 { font-size:1.45rem; }
+.animated-text { font-size:1rem; }
+.btn-explore, .btn-contact { width:100%; margin-bottom:8px; }
+.card { margin-bottom:1rem; }
+.footer-columns { flex-direction: column; }
+.footer-column { margin-bottom: 2rem; max-width: 100%; padding: 0; }
+.newsletter-form { max-width: 100%; }
+}
+.footer-logo {
+  height: 60px;           /* Adjust size to optimal height */
+  margin-bottom: 12px;    /* Space below logo */
+  border-radius: 6px;     /* Rounded corners for smooth edges */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* Soft shadow for subtle depth */
+  object-fit: contain;    /* Maintain aspect ratio */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;     /* Center horizontally in footer column */
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.footer-logo:hover {
+  transform: scale(1.05); /* Slight zoom on hover for interactivity */
+}
+
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">RVNS Solutions</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto text-uppercase">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+        <li class="nav-item"><a class="nav-link" href="internships.html">Internships</a></li>
+        <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="development.html">Development</a></li>
+        <li class="nav-item"><a class="nav-link" href="career.php">Career</a></li>
+        <li class="nav-item"><a class="nav-link" href="feedback.php">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-content" data-aos="fade-up">
+    <h1>Unleash Your IT Potential with India’s Leading Mentor Platform</h1>
+    <div class="animated-text" id="typed-text"></div>
+    <p>RVNS Solutions delivers powerful career-focused training, project-based internships, and cutting-edge development to drive your success in tech and beyond.</p>
+    <a href="courses.html" class="btn-explore">Explore All Programs</a>
+    <a href="contact.html" class="btn-contact">Contact Us</a>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stats-section" data-aos="fade-up">
+  <div class="container">
+    <div class="row text-center g-4 justify-content-center">
+      <div class="col-md-3 stats-box"><h2>1000+</h2><p>Students Trained</p></div>
+      <div class="col-md-3 stats-box"><h2>95%</h2><p>Placement Rate</p></div>
+      <div class="col-md-3 stats-box"><h2>25+</h2><p>Courses & Technologies</p></div>
+      <div class="col-md-3 stats-box"><h2>7+</h2><p>Years of Excellence</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Courses Section -->
+<section class="py-5" data-aos="fade-up">
+  <div class="container">
+    <h2 class="section-title">Our Courses</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card">
+          <i class="fas fa-laptop-code feature-icon icon-java"></i>
+          <h5 class="card-title">Programming Languages</h5>
+          <p>Java, Python, C++, and more. Learn via guided projects, labs, and expert mentorship.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <i class="fas fa-brain feature-icon icon-data"></i>
+          <h5 class="card-title">Data Science & AI</h5>
+          <p>Analytics, machine learning, and AI frameworks for tomorrow's tech world.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <i class="fas fa-globe feature-icon icon-web"></i>
+          <h5 class="card-title">Full Stack Web</h5>
+          <p>Build real web applications with React, Node, and Django.</p>
+        </div>
+      </div>
+    </div>
+    <div class="section-btn"><a href="courses.html" class="btn-main">View All Courses</a></div>
+  </div>
+</section>
+
+<!-- Internships Section -->
+<section class="py-5 bg-light" data-aos="fade-up">
+  <div class="container">
+    <h2 class="section-title">Internship Programs</h2>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-5">
+        <div class="card">
+          <i class="fas fa-user-clock feature-icon icon-internship"></i>
+          <h5 class="card-title">Short-Term Internships</h5>
+          <p>Accelerated skill-building, live mini projects, and certification for fast upskilling.</p>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="card">
+          <i class="fas fa-hourglass-half feature-icon icon-internship"></i>
+          <h5 class="card-title">Long-Term Internships</h5>
+          <p>Immersive real industry projects, professional mentorship, and placement support.</p>
+        </div>
+      </div>
+    </div>
+    <div class="section-btn"><a href="internships.html" class="btn-main">View All Internships</a></div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section class="py-5" data-aos="fade-up">
+  <div class="container">
+    <h2 class="section-title text-center">Live Projects</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card">
+          <i class="fas fa-desktop feature-icon icon-project"></i>
+          <h5 class="card-title">Web Applications</h5>
+          <p>Build and deploy scalable web platforms from idea to launch.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <i class="fas fa-mobile-alt feature-icon icon-project"></i>
+          <h5 class="card-title">Mobile Apps</h5>
+          <p>Develop Android/iOS apps that solve real-world problems, with modern UX.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <i class="fas fa-cloud feature-icon icon-project"></i>
+          <h5 class="card-title">Cloud & IoT</h5>
+          <p>Integrate cloud solutions with IoT devices for smart, innovative tech.</p>
+        </div>
+      </div>
+    </div>
+    <div class="section-btn"><a href="projects.html" class="btn-main">View All Projects</a></div>
+  </div>
+</section>
+
+<!-- Development Services -->
+<section class="py-5 bg-light" data-aos="fade-up">
+  <div class="container">
+    <h2 class="section-title text-center">Development Services</h2>
+    <p class="text-center mb-4">Custom software solutions for web, mobile, cloud, and enterprise — built for your growth.</p>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card">
+          <i class="fas fa-code feature-icon icon-dev-web"></i>
+          <h5 class="card-title">Web Development</h5>
+          <p>Responsive, secure, scalable websites crafted to elevate your brand.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <i class="fas fa-mobile-screen feature-icon icon-dev-mobile"></i>
+          <h5 class="card-title">Mobile Development</h5>
+          <p>Custom Android/iOS apps with flawless UX for your audience.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <i class="fas fa-network-wired feature-icon icon-dev-cloud"></i>
+          <h5 class="card-title">Cloud/API Solutions</h5>
+          <p>Cloud setup, APIs, and automations that scale with your business.</p>
+        </div>
+      </div>
+    </div>
+    <div class="section-btn"><a href="development.html" class="btn-main">View All Services</a></div>
+  </div>
+</section>
+
+<!-- Why Us -->
+<section class="py-5" data-aos="fade-up">
+  <div class="container text-center">
+    <h2 class="section-title">Why Choose RVNS Solutions?</h2>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-3">
+        <div class="best-feature">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <div><h6>Expert Mentors</h6><small>Learn from leaders with real-world expertise</small></div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="best-feature">
+          <i class="fas fa-briefcase"></i>
+          <div><h6>Career Focus</h6><small>Guided roadmap and placement boost</small></div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="best-feature">
+          <i class="fas fa-code"></i>
+          <div><h6>Real Projects</h6><small>Work on practical solutions, not just theory</small></div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="best-feature">
+          <i class="fas fa-cogs"></i>
+          <div><h6>Development Excellence</h6><small>Top software for businesses & startups</small></div>
+        </div>
+      </div>
+    </div>
+    <p class="fst-italic mt-4" style="color:#3a5873;">
+      "Learn, build, and grow with RVNS Solutions — your trusted partner for IT excellence."
+    </p>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section" data-aos="fade-up">
+  <div class="container">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h6>What IT programs do you offer?</h6>
+      <p>We offer comprehensive programs in programming, data science, web/mobile development, and business software, all led by acclaimed instructors.</p>
+    </div>
+    <div class="faq-item">
+      <h6>How do internships work?</h6>
+      <p>Choose short or long-term internships for real experience. Each includes hands-on projects, mentoring, and placement support.</p>
+    </div>
+    <div class="faq-item">
+      <h6>Do you provide business development services?</h6>
+      <p>Yes! We build scalable web, mobile, and cloud technology customized for your organization or startup.</p>
+    </div>
+    <div class="faq-item">
+      <h6>Will I get placement assistance?</h6>
+      <p>Absolutely. We provide ongoing career support and connect you with job opportunities on completion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer-bg">
+  <div class="container">
+    <div class="footer-columns">
+      <div class="footer-column text-center text-md-start">
+        <img src="logo.jpg" alt="RVNS Solutions" class="footer-logo" />
+        <p class="fst-italic">Empowering your IT journey with skills, projects, and innovation.</p>
+      </div>
+      <div class="footer-column">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="about.html" class="footer-link">About Us</a></li>
+          <li><a href="courses.html" class="footer-link">Courses</a></li>
+          <li><a href="internships.html" class="footer-link">Internships</a></li>
+          <li><a href="projects.html" class="footer-link">Projects</a></li>
+          <li><a href="contact.html" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h5>Contact Us</h5>
+        <p><i class="bi bi-geo-alt-fill me-2"></i>Adoni, Andhra Pradesh, India</p>
+        <p><i class="bi bi-telephone-fill me-2"></i><a href="tel:+918328051076" class="footer-link">+91 8328051076</a></p>
+        <p><i class="bi bi-envelope-fill me-2"></i><a href="mailto:rvnssolutions@gmail.com" class="footer-link">rvnssolutions@gmail.com</a></p>
+      </div>
+      <div class="footer-column text-center text-md-start">
+        <h5>Subscribe to Our Newsletter</h5>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+          <input type="email" placeholder="Enter your email" required aria-label="Email" />
+          <button type="submit">Subscribe</button>
+        </form>
+        <div class="social-icons mt-3" role="navigation" aria-label="Social Media Links">
+          <a href="#" aria-label="Facebook" target="_blank"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Twitter" target="_blank"><i class="bi bi-twitter"></i></a>
+          <a href="#" aria-label="Instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn" target="_blank"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="YouTube" target="_blank"><i class="bi bi-youtube"></i></a>
+          <a href="#" aria-label="Telegram" target="_blank"><i class="bi bi-telegram"></i></a>
+          <a href="#" aria-label="Threads" target="_blank"><i class="bi bi-threads"></i></a>
+          <a href="#" aria-label="GitHub" target="_blank"><i class="bi bi-github"></i></a>
+          <a href="https://wa.me/918328051076" aria-label="WhatsApp" target="_blank"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-white-50 small mt-4">
+      <a href="privacy.html" class="footer-link me-3">Privacy Policy</a>
+      <a href="terms.html" class="footer-link me-3">Terms of Service</a>
+      &copy; 2025 RVNS Solutions. All Rights Reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Call & WhatsApp Buttons -->
+<a href="tel:+918328051076" class="call-float" aria-label="Call Us"><i class="bi bi-telephone-fill"></i></a>
+<a href="https://wa.me/918328051076" class="wa-float" aria-label="WhatsApp Chat"><i class="bi bi-whatsapp"></i></a>
+
+<!-- JS Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+AOS.init({duration:900});
+
+new Typed('#typed-text', {
+  strings: [
+    "Transform Your Future with Industry-Ready IT Skills",
+    "Hands-On Projects That Build Real Expertise",
+    "Launch Your Career with Expert Mentorship",
+    "Custom Software Development for Bold Ideas",
+    "Internships to Ignite Your Learning Journey",
+    "Reliable Placement Assistance for Career Growth",
+    "Future-Focused Training for Next-Gen Innovators"
+  ],
+  typeSpeed: 47,
+  backSpeed: 28,
+  backDelay: 1700,
+  loop: true,
+  shuffle: true,
+  showCursor: true,
+  cursorChar: '|'
+});
+</script>
+
+</body>
+</html>

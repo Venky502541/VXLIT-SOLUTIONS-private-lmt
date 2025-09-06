@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>RVNS Solutions - Careers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9fafb;
+      color: #222;
+      margin: 0;
+    }
+    nav.navbar {
+      background-color: #0a2239;
+    }
+    nav .navbar-brand {
+      color: #16db93 !important;
+      font-weight: 700;
+      font-size: 1.85rem;
+    }
+    nav .nav-link {
+      color: #dce8ea !important;
+      font-weight: 600;
+    }
+    nav .nav-link:hover,
+    nav .nav-link.active {
+      color: #16db93 !important;
+    }
+    .hero {
+      height: 320px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(22, 219, 147, 0.9),
+          rgba(6, 48, 121, 0.85)
+        ),
+        url('careers-hero.jpg') center center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 0 1.5rem;
+    }
+    .hero h1 {
+      font-weight: 900;
+      font-size: 3rem;
+      max-width: 700px;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 5px 15px rgba(0,0,0,0.7);
+    }
+    .hero p {
+      font-weight: 400;
+      font-size: 1.4rem;
+      max-width: 650px;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.6);
+    }
+    main {
+      max-width: 900px;
+      margin: 3rem auto 6rem;
+      padding: 0 1rem;
+    }
+    h2.section-title {
+      font-weight: 900;
+      font-size: 2.5rem;
+      color: #0a2239;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .job-listing {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 3rem 0;
+    }
+    .job-listing li {
+      background: #e6f7f4;
+      border: 2px solid #16db93;
+      padding: 1rem 1.5rem;
+      border-radius: 16px;
+      margin-bottom: 1.4rem;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+    .job-listing li:hover {
+      background-color: #d1f0e8;
+    }
+    .job-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #0a4433;
+    }
+    .job-location {
+      font-weight: 500;
+      font-style: italic;
+      color: #146250;
+      margin-top: 0.3rem;
+    }
+    .culture-section {
+      background: #daf9ec;
+      border-radius: 20px;
+      padding: 2rem 2.5rem;
+      margin-bottom: 3rem;
+      color: #106743;
+      box-shadow: 0 12px 30px rgba(22, 219, 147, 0.15);
+    }
+    .culture-section p {
+      font-size: 1.12rem;
+      line-height: 1.7;
+    }
+    form.application-form {
+      background: #f4fefa;
+      padding: 2.5rem 2rem;
+      border-radius: 20px;
+      box-shadow: 0 14px 40px rgba(22, 219, 147, 0.2);
+    }
+    form.application-form label {
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+    form.application-form input,
+    form.application-form textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px solid #16db93;
+      border-radius: 10px;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      resize: vertical;
+    }
+    form.application-form button {
+      background-color: #16db93;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-top: 1.8rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    form.application-form button:hover {
+      background-color: #108157;
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      main {
+        margin: 2rem auto 4rem;
+        padding: 0 1rem;
+      }
+      .job-listing li {
+        font-size: 1rem;
+      }
+      form.application-form label {
+        margin-top: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg sticky-top" role="navigation" aria-label="Primary Navigation">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">RVNS Solutions</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto text-uppercase">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="courses.html" class="nav-link">Courses</a></li>
+          <li><a href="internships.html" class="nav-link">Internships</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="development.html" class="nav-link">Development</a></li>
+          <li><a href="careers.html" class="nav-link active">Careers</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <section class="hero" role="banner" aria-label="Careers Hero">
+    <div>
+      <h1>Join Our Team</h1>
+      <p>Shape your future with RVNS Solutions. Explore exciting career opportunities and grow with us.</p>
+    </div>
+  </section>
+  
+  <main role="main" class="container">
+    <h2 class="section-title" data-aos="fade-up">Current Job Openings</h2>
+    <ul class="job-listing" data-aos="fade-up" data-aos-delay="200" role="list">
+      <li tabindex="0">
+        <div class="job-title">Software Developer</div>
+        <div class="job-location">Adoni, Andhra Pradesh, India</div>
+      </li>
+      <li tabindex="0">
+        <div class="job-title">Mobile App Engineer</div>
+        <div class="job-location">Remote</div>
+      </li>
+      <li tabindex="0">
+        <div class="job-title">Quality Assurance Analyst</div>
+        <div class="job-location">Adoni, Andhra Pradesh, India</div>
+      </li>
+    </ul>
+    
+    <section class="culture-section" data-aos="fade-up" data-aos-delay="400" aria-label="Company Culture">
+      <h2 class="section-title">Our Culture & Values</h2>
+      <p>At RVNS Solutions, we foster a culture of innovation, collaboration, and continuous learning. We believe in empowering our team members to achieve their best, supporting growth both professionally and personally.</p>
+    </section>
+    
+    <section class="application-form-section" data-aos="fade-up" data-aos-delay="600" aria-label="Job Application Form">
+      <h2 class="section-title">Apply Now</h2>
+      <form class="application-form" aria-label="Career application form" onsubmit="event.preventDefault(); alert('Your application has been submitted. Thank you!');">
+        <label for="applicant-name">Full Name</label>
+        <input id="applicant-name" name="name" type="text" placeholder="Your full name" required />
+        
+        <label for="applicant-email">Email Address</label>
+        <input id="applicant-email" name="email" type="email" placeholder="Your email address" required />
+        
+        <label for="applicant-phone">Phone Number</label>
+        <input id="applicant-phone" name="phone" type="tel" placeholder="Your phone number" />
+        
+        <label for="applicant-resume">Upload Resume</label>
+        <input id="applicant-resume" name="resume" type="file" accept=".pdf,.doc,.docx" />
+        
+        <label for="applicant-message">Cover Letter (Optional)</label>
+        <textarea id="applicant-message" name="message" rows="5" placeholder="Write a brief cover letter"></textarea>
+        
+        <button type="submit">Submit Application</button>
+      </form>
+    </section>
+  </main>
+  
+  <footer role="contentinfo" aria-label="Site Footer" class="text-center" style="background:#0a2239; padding:40px 20px; color:#d2dfe4;">
+    <img src="images/logo.png" alt="RVNS Solutions Logo" style="max-width:140px; margin-bottom:1rem;" />
+    <nav aria-label="Social media links" class="social my-3">
+      <a href="#" aria-label="Facebook" class="text-light me-3"><i class="bi bi-facebook fs-4"></i></a>
+      <a href="#" aria-label="Twitter" class="text-light me-3"><i class="bi bi-twitter fs-4"></i></a>
+      <a href="#" aria-label="Instagram" class="text-light me-3"><i class="bi bi-instagram fs-4"></i></a>
+      <a href="#" aria-label="LinkedIn" class="text-light me-3"><i class="bi bi-linkedin fs-4"></i></a>
+      <a href="#" aria-label="WhatsApp" class="text-light"><i class="bi bi-whatsapp fs-4"></i></a>
+    </nav>
+    <p>&copy; 2025 RVNS Solutions. All rights reserved.</p>
+  </footer>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      AOS.init({
+        duration: 900,
+        once: true,
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RVNS Solutions – Academic Project Development Help</title>
+
+<!-- Libraries -->
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet" />
+
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #f5f8fa;
+  }
+  .navbar {
+    background: #0a2239;
+  }
+  .navbar-brand {
+    color: #16db93 !important;
+    font-weight: 700;
+    font-size: 1.6rem;
+  }
+  .nav-link {
+    color: #dce3e8 !important;
+    font-weight: 600;
+  }
+  .nav-link:hover,
+  .nav-link.active {
+    color: #16db93 !important;
+  }
+  .hero {
+    background: linear-gradient(rgba(10,34,57,0.8), rgba(10,34,57,0.6)),
+      url('projects-banner.jpg') center/cover no-repeat;
+    padding: 80px 0;
+    color: white;
+    text-align: center;
+  }
+  .hero h1 {
+    font-weight: 800;
+    font-size: 2.5rem;
+  }
+  .hero p {
+    max-width: 800px;
+    margin: auto;
+    font-size: 1.15rem;
+  }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 30px;
+    padding: 0 15px 60px;
+  }
+  .project-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  .project-icon {
+    font-size: 4rem;
+    color: #16db93;
+    margin-bottom: 15px;
+  }
+  .project-category {
+    font-size: 0.85rem;
+    background: #e0f6ee;
+    color: #16db93;
+    padding: 3px 10px;
+    border-radius: 15px;
+    display: inline-block;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .project-title {
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+  .project-desc {
+    color: #444;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    min-height: 72px;
+  }
+  .btn-view {
+    background: #16db93;
+    color: #0a2239;
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    align-self: flex-start;
+  }
+  .btn-view:hover {
+    background: #0ebf7e;
+    color: #fff;
+  }
+  .footer-bg {
+    background: #0a2239;
+    color: #a7c7c4;
+    padding: 3rem 1rem;
+  }
+  .footer-link {
+    color: #a7c7c4;
+    text-decoration: none;
+  }
+  .footer-link:hover {
+    color: #16db93;
+  }
+  .footer-logo {
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 12px;
+  }
+  .social-icons a {
+    font-size: 1.6rem;
+    margin-right: 12px;
+    color: #16db93;
+    transition: color 0.3s;
+  }
+  .social-icons a:hover {
+    color: #72ead6;
+  }
+  /* Floating Contact Button */
+  .floating-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
+  }
+  .fab {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: none;
+    background: #16db93;
+    color: #0a2239;
+    font-size: 1.3rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+  .fab:hover {
+    background: #0ebf7e;
+    color: #fff;
+  }
+</style>
+
+</head>
+<body>
+
+<!-- HEADER -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">RVNS Solutions</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" style="filter:invert(1);"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto text-uppercase">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+        <li class="nav-item"><a class="nav-link" href="internships.html">Internships</a></li>
+        <li class="nav-item"><a class="nav-link active" href="projects.html">Development Help</a></li>
+        <li class="nav-item"><a class="nav-link" href="development.html">Development</a></li>
+        <li class="nav-item"><a class="nav-link" href="career.html">Career</a></li>
+        <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
+        <li class="nav-item"><a class="nav-link" href="partners.html">Partners</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" data-aos="fade-up">
+  <div class="container">
+    <h1>Academic Project Development Help</h1>
+    <p>Expert assistance on student academic projects across AI, ML, DL, NLP, Blockchain, Django/Flask, eCommerce, Java, Cloud, Security, Networking, IoT, and more.</p>
+  </div>
+</section>
+
+<!-- PROJECTS GRID -->
+<div class="container">
+  <div class="projects-grid">
+
+    <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+      <div class="project-icon"><i class="fas fa-robot"></i></div>
+      <div class="project-category">Machine Learning & AI</div>
+      <h5 class="project-title">ML, AI, Deep Learning, NLP Projects</h5>
+      <p class="project-desc">Development help on predictive models, chatbots, computer vision, deep networks, and NLP applications for academic use.</p>
+      <button class="btn-view" onclick="openProject('ML_AI')">View Details</button>
+    </div>
+
+    <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+      <div class="project-icon"><i class="fas fa-link"></i></div>
+      <div class="project-category">Blockchain & Cryptocurrency</div>
+      <h5 class="project-title">Blockchain & Crypto Projects</h5>
+      <p class="project-desc">Help with blockchain development, smart contracts, decentralized apps (DApps), and crypto-related student projects.</p>
+      <button class="btn-view" onclick="openProject('Blockchain')">View Details</button>
+    </div>
+
+    <div class="project-card" data-aos="zoom-in" data-aos-delay="300">
+      <div class="project-icon"><i class="fab fa-python"></i></div>
+      <div class="project-category">Python Frameworks</div>
+      <h5 class="project-title">Django & Flask Projects</h5>
+      <p class="project-desc">Support for web development projects in Django or Flask including REST APIs, dashboards, and full-stack applications.</p>
+      <button class="btn-view" onclick="openProject('Python_Frameworks')">View Details</button>
+    </div>
+
+    <div class="project-card" data-aos="zoom-in" data-aos-delay="400">
+      <div class="project-icon"><i class="fas fa-shopping-cart"></i></div>
+      <div class="project-category">E-commerce</div>
+      <h5 class="project-title">E-commerce Web Projects</h5>
+      <p class="project-desc">Guidance for building online stores, payment integration, user management, and product catalog projects.</p>
+      <button class="btn-view" onclick="openProject('Ecommerce')">View Details</button>
+    </div>
+
+    <div class="project-card" data-aos="zoom-in" data-aos-delay="500">
+      <div class="project-icon"><i class="fab fa-java"></i></div>
+      <div class="project-category">Java & Web Apps</div>
+      <h5 class="project-title">Java Web & Desktop Projects</h5>
+      <p class="project-desc">Assistance with Java programming, including Spring-based web apps, desktop applications, and Android projects.</p>
+      <button class="btn-view" onclick="openProject('Java')">View Details</button>
+    </div>
+
+    <div class="project-card" data-aos="zoom-in" data-aos-delay="600">
+      <div class="project-icon"><i class="fas fa-cloud"></i></div>
+      <div class="project-category">Cloud & DevOps</div>
+      <h5 class="project-title">Cloud Computing & DevOps Projects</h5>
+      <p class="project-desc">Project help with AWS, Azure, Docker, Kubernetes, continuous integration, and deployment for academic projects.</p>
+      <button class="btn-view" onclick="openProject('Cloud_DevOps')">View Details</button>
+    </div>
+
+    <div class="project-card" data-aos="zoom-in" data-aos-delay="700">
+      <div class="project-icon"><i class="fas fa-shield-alt"></i></div>
+      <div class="project-category">Cybersecurity</div>
+      <h5 class="project-title">Security & Ethical Hacking Projects</h5>
+      <p class="project-desc">Guidance on security audits, penetration testing, network security projects suitable for academic coursework.</p>
+      <button class="btn-view" onclick="openProject('Security')">View Details</button>
+    </div>
+
+    <div class="project-card" data-aos="zoom-in" data-aos-delay="800">
+      <div class="project-icon"><i class="fas fa-network-wired"></i></div>
+      <div class="project-category">Networking</div>
+      <h5 class="project-title">Networking & Protocol Projects</h5>
+      <p class="project-desc">Help students with networking simulations, protocol analysis, socket programming, and related projects.</p>
+      <button class="btn-view" onclick="openProject('Networking')">View Details</button>
+    </div>
+
+    <div class="project-card" data-aos="zoom-in" data-aos-delay="900">
+      <div class="project-icon"><i class="fas fa-microchip"></i></div>
+      <div class="project-category">IoT Projects</div>
+      <h5 class="project-title">Internet of Things Projects</h5>
+      <p class="project-desc">Academic IoT projects including sensor networks, automation, Raspberry Pi, Arduino, and smart device developments.</p>
+      <button class="btn-view" onclick="openProject('IoT')">View Details</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- PROJECT DETAILS MODAL -->
+<div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="projectModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="projectModalContent" style="font-size: 1rem; color: #333;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FLOATING CONTACT BUTTON -->
+<div class="floating-buttons">
+  <button class="fab" onclick="window.location.href='contact.html'" title="Contact Us">
+    <i class="fas fa-envelope"></i>
+  </button>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer-bg" data-aos="fade-up">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 text-center text-md-start">
+        <img src="logo.jpg" alt="RVNS Solutions" class="footer-logo" />
+        <p>Empowering your IT journey with skills, projects, and innovation.</p>
+      </div>
+      <div class="col-md-3">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="about.html" class="footer-link">About Us</a></li>
+          <li><a href="courses.html" class="footer-link">Courses</a></li>
+          <li><a href="internships.html" class="footer-link">Internships</a></li>
+          <li><a href="projects.html" class="footer-link">Development Help</a></li>
+          <li><a href="contact.html" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h5>Contact Us</h5>
+        <p><i class="bi bi-geo-alt-fill me-2"></i>Adoni, Andhra Pradesh, India</p>
+        <p><i class="bi bi-telephone-fill me-2"></i>+91 8328051076</p>
+        <p><i class="bi bi-envelope-fill me-2"></i>rvnssolutions@gmail.com</p>
+      </div>
+      <div class="col-md-3 text-center text-md-start">
+        <h5>Subscribe</h5>
+        <form onsubmit="event.preventDefault();alert('Subscribed!');">
+          <input type="email" placeholder="Enter your email" required class="form-control mb-2" />
+          <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+        </form>
+        <div class="social-icons mt-3">
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-twitter"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-youtube"></i></a>
+          <a href="#"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts: Bootstrap & AOS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
+
+  function openProject(name) {
+  let content = "";
+  switch(name) {
+    case "ML_AI":
+      content = `<p>We support academic projects in Machine Learning, Artificial Intelligence, Deep Learning, and Natural Language Processing, including:</p>
+        <ul>
+          <li>Predictive modeling and classification</li>
+          <li>Image recognition and computer vision</li>
+          <li>Chatbots and conversational AI</li>
+          <li>Deep neural network architectures</li>
+          <li>Text analysis, sentiment analysis, and NLP applications</li>
+        </ul>`;
+      break;
+    case "Blockchain":
+      content = `<p>Academic project assistance in Blockchain and Cryptocurrency domains, covering:</p>
+        <ul>
+          <li>Smart contract development using Ethereum and Solidity</li>
+          <li>Decentralized applications (DApps) design and implementation</li>
+          <li>Cryptocurrency wallet integration and security</li>
+          <li>Blockchain consensus algorithms and security features</li>
+          <li>Use cases like supply chain, finance, NFT marketplaces</li>
+        </ul>`;
+      break;
+    case "Python_Frameworks":
+      content = `<p>Comprehensive help for Python web frameworks projects such as Django and Flask, featuring:</p>
+        <ul>
+          <li>Full-stack web application development</li>
+          <li>RESTful APIs and microservices</li>
+          <li>User authentication and role-based access control</li>
+          <li>Database integrations with ORM tools</li>
+          <li>Deployment on cloud platforms</li>
+        </ul>`;
+      break;
+    case "Ecommerce":
+      content = `<p>Guidance on E-commerce related academic projects including:</p>
+        <ul>
+          <li>Product catalog management systems</li>
+          <li>Shopping cart and checkout workflows</li>
+          <li>Payment gateway integration and security</li>
+          <li>User profile and order management modules</li>
+          <li>Mobile friendly responsive design</li>
+        </ul>`;
+      break;
+    case "Java":
+      content = `<p>Assistance with academic projects in Java domains, including:</p>
+        <ul>
+          <li>Java EE web applications with Servlets and JSP</li>
+          <li>Spring Boot microservices and REST APIs</li>
+          <li>Desktop GUI projects with JavaFX or Swing</li>
+          <li>Android mobile application development</li>
+          <li>Enterprise-level software solutions</li>
+        </ul>`;
+      break;
+    case "Cloud_DevOps":
+      content = `<p>Support for projects in Cloud Computing and DevOps technologies, such as:</p>
+        <ul>
+          <li>Cloud infrastructure setup on AWS, Azure, and Google Cloud</li>
+          <li>Containerization with Docker and orchestration with Kubernetes</li>
+          <li>CI/CD pipelines using Jenkins or GitHub Actions</li>
+          <li>Infrastructure as code with Terraform</li>
+          <li>Monitoring and logging with Prometheus and Grafana</li>
+        </ul>`;
+      break;
+    case "Security":
+      content = `<p>Guidance for academic projects in Cybersecurity and Ethical Hacking, including:</p>
+        <ul>
+          <li>Security audits and vulnerability assessment</li>
+          <li>Penetration testing methodologies</li>
+          <li>Network security implementation</li>
+          <li>Cryptography and secure communications</li>
+          <li>Incident response and forensics</li>
+        </ul>`;
+      break;
+    case "Networking":
+      content = `<p>Assistance with Networking academic projects such as:</p>
+        <ul>
+          <li>Network simulations and protocol analysis</li>
+          <li>Socket programming and client-server applications</li>
+          <li>Wireless network project implementations</li>
+          <li>Routing and switching configurations</li>
+          <li>Network performance and security evaluations</li>
+        </ul>`;
+      break;
+    case "IoT":
+      content = `<p>Student project help in Internet of Things (IoT), including:</p>
+        <ul>
+          <li>Sensor integration with Arduino and Raspberry Pi</li>
+          <li>Home automation and smart device projects</li>
+          <li>Data acquisition and cloud synchronization</li>
+          <li>Real-time monitoring systems</li>
+          <li>IoT protocols such as MQTT and CoAP</li>
+        </ul>`;
+      break;
+    default:
+      content = "<p>More details coming soon for this project category.</p>";
+  }
+  document.getElementById("projectModalLabel").textContent = name.replace(/_/g, " ");
+  document.getElementById("projectModalContent").innerHTML = content;
+  new bootstrap.Modal(document.getElementById("projectModal")).show();
+}
+
+</script>
+
+</body>
+</html>
