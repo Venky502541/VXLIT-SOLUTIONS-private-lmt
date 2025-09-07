@@ -4,316 +4,310 @@
   <meta charset="UTF-8" />
   <title>Contact Us – RVNS Solutions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Bootstrap 5 & Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
     body, html {
-      margin: 0; padding: 0; height: 100%;
+      margin: 0; padding: 0; min-height: 100vh;
       font-family: 'Poppins', sans-serif;
       background: #f5faf8;
       color: #1e2c27;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
     }
     nav.navbar {
       background: #0a2239;
     }
-    nav .navbar-brand,
-    nav .nav-link {
+    nav .navbar-brand, nav .nav-link {
       color: #16db93 !important;
       font-weight: 600;
-      letter-spacing: 1px;
     }
-    nav .nav-link.active,
-    nav .nav-link:hover {
+    nav .nav-link.active, nav .nav-link:hover {
       color: #a7ffdb !important;
     }
     header {
       background: linear-gradient(135deg, #14c58d 0%, #0a2239 100%);
       color: #fff;
-      padding: 5rem 1rem 6rem;
+      padding: 4.2rem 1rem 2.7rem 1rem;
       text-align: center;
-      box-shadow: 0 8px 40px rgba(20, 205, 141, 0.4);
-      letter-spacing: 1.5px;
+      box-shadow: 0 8px 40px rgba(20,205,141,0.15);
     }
     header h1 {
-      font-size: 3.2rem;
+      font-size: 2.3rem;
       font-weight: 900;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
+      letter-spacing: 1px;
       line-height: 1.1;
     }
     header p {
-      font-weight: 300;
-      font-size: 1.3rem;
-      max-width: 650px;
-      margin: 0 auto;
-      opacity: 0.9;
-      line-height: 1.5;
+      font-size: 1.08rem;
+      font-weight: 400;
+      opacity: 0.95;
+      max-width: 560px;
+      margin: 0 auto 0;
     }
-    main.container {
-      max-width: 960px;
-      margin: -8rem auto 4rem;
-      display: flex;
-      gap: 3rem;
-      flex-wrap: wrap;
-      padding: 2rem 1.5rem 3rem;
-      background: #fafafa;
-      border-radius: 25px;
-      box-shadow: 0 10px 40px rgba(22,219,147,0.1);
-      color: #11523f;
-    }
-    aside.contact-info {
-      flex: 1 1 320px;
-      background: #daf9ec;
-      border-radius: 20px;
-      padding: 3rem 2.5rem;
-      box-shadow: 0 10px 30px rgba(22,219,147,0.15);
+    .contact-main {
+      width: 100%;
+      max-width: 700px;
+      margin: -3.2rem auto 2.7rem auto;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 8px 40px rgba(22,219,147,0.11);
+      padding: 2.5rem 2rem 2rem 2rem;
+      gap: 1.9rem;
     }
-    aside.contact-info h2 {
+    .contact-info-title {
       font-weight: 900;
       font-size: 2rem;
-      margin-bottom: 2.5rem;
       color: #0a263f;
+      text-align: center;
     }
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      margin-bottom: 1.6rem;
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: #0d3c31;
-    }
-    .contact-item svg {
-      flex-shrink: 0;
-      width: 30px;
-      height: 30px;
-      fill: #16db93;
-      margin-top: 3px;
-    }
-    .contact-text a {
-      color: #11523f;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    .contact-text a:hover,
-    .contact-text a:focus {
-      color: #0a3329;
-      outline: none;
-    }
-    .contact-text small {
-      font-weight: 400;
-      font-size: 0.9rem;
-      color: #3f7c64;
-      display: block;
-      margin-top: 0.25rem;
-      line-height: 1.3;
-    }
-    section.contact-form {
-      flex: 1.4 1 580px;
-      background: #fcfeff;
-      box-shadow: 0 12px 50px rgba(20,205,141,0.1);
-      border-radius: 22px;
-      padding: 3rem 3rem 4rem;
-      color: #1b2c24;
+    .info-cards {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      gap: 1.1rem;
     }
-    section.contact-form h2 {
-      font-weight: 900;
-      font-size: 2.3rem;
-      margin-bottom: 2.4rem;
-      color: #0a2a26;
-      text-align: center;
-    }
-    label {
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      display: block;
-      font-size: 0.98rem;
-      letter-spacing: 0.5px;
-      color: #164933;
-    }
-    input, textarea {
-      width: 100%;
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.05rem;
-      padding: 15px 18px;
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 1.15rem;
       border-radius: 16px;
-      border: 2px solid #16db93;
-      box-sizing: border-box;
-      color: #165238;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      padding: 1.15rem 1rem;
+      background: #f2fdfa;
+      box-shadow: 0 2px 10px rgba(22,219,147,0.045);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #12523d;
     }
-    input:focus, textarea:focus {
+    .info-row .ci {
+      width: 28px; height: 28px; font-size: 1.5rem;
+      color: #16db93; flex-shrink: 0;
+    }
+    .info-main {
+      display: flex; flex-direction: column;
+    }
+    .info-main a {
+      color: #155848; text-decoration: none; font-size: 1.1rem; font-weight: bold;
+      transition: color 0.22s;
+    }
+    .info-main a:hover, .info-main a:focus {color: #14c58d; text-decoration: underline;}
+    .info-main small {color: #468768; font-weight: 400; margin-top: 1.5px;}
+    /* Social */
+    .social-bar {
+      text-align: center; margin-top: 0.1rem; margin-bottom: 0;
+    }
+    .social-bar a {
+      display: inline-block; margin: 0 0.7rem; font-size: 2rem; color: #16db93;
+      border-radius:50%; padding: 0.3em;
+      background: #eafff6; transition: color .22s, background .22s, transform .16s;
+      vertical-align: middle;
+    }
+    .social-bar a:hover, .social-bar a:focus {
+      color: #fff; background: #14c58d; transform: translateY(-3px) scale(1.07);
       outline: none;
-      border-color: #0a322a;
-      box-shadow: 0 0 12px #14bd9080;
     }
-    textarea {
-      min-height: 150px;
-      resize: vertical;
-    }
-    button[type="submit"] {
-      margin-top: 3rem;
-      width: 100%;
-      font-weight: 900;
-      font-size: 1.25rem;
-      padding: 18px 0;
-      background: #0a322a;
-      border: none;
-      border-radius: 50px;
-      color: #a6fff7;
-      cursor: pointer;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    }
-    button[type="submit"]:hover,
-    button[type="submit"]:focus {
-      background-color: #068362;
-      box-shadow: 0 8px 30px #15c18e88;
-      color: #dbfff1;
-      outline: none;
-    }
+    .social-bar a.whatsapp { color: #25D366; background:#f2fff9; }
+    .social-bar a.whatsapp:hover { background:#25D366; color:#fff;}
+    .social-bar a.linkedin { color: #0077b5; background:#e5f5fb; }
+    .social-bar a.linkedin:hover { background:#0077b5; color: #fff;}
+    /* Map */
     .map-container {
-      max-width: 960px;
-      height: 320px;
-      margin: 3rem auto 2rem;
-      border-radius: 32px;
-      overflow: hidden;
-      box-shadow: 0 10px 45px rgba(20,205,141,0.2);
+      width:100%; max-width:700px; margin: 2.7rem auto 0 auto;
+      border-radius:24px; overflow:hidden;
+      box-shadow: 0 10px 40px rgba(20,205,141,0.18);
+      height:320px;
     }
-    .map-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
+    .map-container iframe { width:100%; height:100%; border:none;}
+    /* Footer */
     footer {
-      background-color: #0a2239;
+      background: #0a2239;
       color: #16db93;
+      font-weight: 600;
       text-align: center;
-      font-weight: 700;
-      padding: 1.2rem 0;
+      padding: 1.05rem 0;
       font-size: 1rem;
       margin-top: auto;
     }
-    @media(max-width: 991px) {
-      main.container {
-        flex-direction: column;
-        margin: -6rem 1rem 3rem;
-        padding: 2rem 1rem 3rem;
-      }
-      aside.contact-info, section.contact-form {
-        flex: 1 1 100%;
-        padding: 2rem 1.5rem;
-      }
-      .map-container {
-        height: 260px;
-      }
-    }
-    @media(max-width: 480px) {
-      header h1 {
-        font-size: 2.3rem;
-      }
-      header p {
-        font-size: 1.15rem;
-      }
-      button[type="submit"] {
-        font-size: 1.15rem;
-        padding: 15px 0;
-      }
+    @media (max-width: 640px) {
+      header h1 { font-size: 1.45rem;}
+      .contact-main { padding: 1.4rem 0.3rem; margin: -2rem 0.2rem 1.4rem 0.2rem;}
+      .info-cards .info-row { padding: 0.96rem 0.6rem; font-size: 1.01rem;}
+      .contact-info-title { font-size:1.17rem; }
+      .map-container { height: 170px;}
+      .social-bar a { font-size:1.5rem; margin: 0 0.5rem;}
     }
   </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top" aria-label="Main navigation">
+
+   <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #0a2239;">
   <div class="container">
-    <a href="index.html" class="navbar-brand">RVNS Solutions</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <a class="navbar-brand" href="index.html" style="font-weight:700; color:#16db93; letter-spacing: 1.5px; font-family: 'Poppins', sans-serif; font-size: 1.5rem;">
+      RVNS Solutions
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" 
+      aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml;charset=utf8,%3csvg viewBox=%270 0 30 30%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3cpath stroke=%27rgba(255,255,255,1)%27 stroke-width=%273%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e');"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="courses.html" class="nav-link">Courses</a></li>
-        <li><a href="internships.html" class="nav-link">Internships</a></li>
-        <li><a href="projects.html" class="nav-link">Projects</a></li>
-        <li><a href="development.html" class="nav-link">Development</a></li>
-        <li><a href="career.php" class="nav-link">Careers</a></li>
-        <li><a href="about.html" class="nav-link">About</a></li>
-        <li><a href="contact.html" class="nav-link active" aria-current="page">Contact</a></li>
+
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto text-uppercase">
+        <li class="nav-item"><a href="index.html" class="nav-link" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="courses.html" class="nav-link">Courses</a></li>
+        <li class="nav-item"><a href="internships.html" class="nav-link">Internships</a></li>
+        <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+        <li class="nav-item"><a href="development.html" class="nav-link">Development</a></li>
+        <li class="nav-item"><a href="career.php" class="nav-link">Career</a></li>
+        <li class="nav-item"><a href="feedback.php" class="nav-link">FAQ</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link active">Contact</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<header role="banner" aria-label="Contact page header">
+<style>
+.navbar-brand {
+  font-weight: 700;
+  color: #16db93 !important;
+  letter-spacing: 1.5px;
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: #16db93;
+  font-weight: 600;
+  padding: 0.45rem 0.75rem;
+  transition: color 0.3s ease;
+  letter-spacing: 0.04em;
+}
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:focus {
+  color: #a7ffdb;
+  outline: none;
+}
+.navbar-dark .navbar-nav .nav-link.active {
+  color: #a7ffdb;
+  font-weight: 700;
+  border-bottom: 3px solid #16db93;
+  padding-bottom: 0.35rem;
+}
+.navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255,255,255,1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+</style>
+
+<!-- Bootstrap 5 JS (required for toggler) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<header>
   <h1>Contact RVNS Solutions</h1>
-  <p>We’re eager to connect with you. Reach out via any method below or send us a message.</p>
+  <p>Let's create great technology together. Reach out to us for business queries, partnerships, training collaborations, or support!</p>
 </header>
 
-<main class="container" role="main" aria-label="Contact form and information">
-
-  <aside class="contact-info" aria-label="Company contact information">
-    <h2>Contact Information</h2>
-
-    <div class="contact-item">
-      <svg aria-hidden="true" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><path d="M12 2a10 10 0 1010 10 10 10 0 00-10-10zm0 14a6 6 0 110-12 6 6 0 010 12zm1-11v3a1 1 0 01-2 0V5h2zm-1 8a2 2 0 012-2h.5v1h-.5a1 1 0 00-1 1z"/></svg>
-      <div class="contact-text">123 Visionary Lane, Tech City, Country</div>
+<div class="contact-main" aria-label="RVNS Solutions Contact Details">
+  <div class="contact-info-title">Contact Information</div>
+  <div class="info-cards">
+    <div class="info-row">
+      <i class="bi bi-geo-alt-fill ci" aria-hidden="true"></i>
+      <div class="info-main">
+        123 Visionary Lane, Tech City, Andhra Pradesh, 522xxx, India
+        <small>Landmark: Near Main IT Park, Adoni</small>
+      </div>
     </div>
-
-    <div class="contact-item">
-      <svg aria-hidden="true" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79a15 15 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.12.45 2.33.69 3.59.69a1 1 0 011 1v3a1 1 0 01-1 1C9.6 20.4 3.6 14.4 3.6 7a1 1 0 011-1h3a1 1 0 011 1c.5 1.3.7 2.5.7 3.6a1 1 0 01-.2 1L6.62 10.79z"/></svg>
-      <div class="contact-text"><a href="tel:+918328051076" aria-label="Call RVNS Solutions">+91 8328051076</a></div>
+    <div class="info-row">
+      <i class="bi bi-telephone-fill ci" aria-hidden="true"></i>
+      <div class="info-main">
+        <a href="tel:+918328051076" aria-label="Call RVNS Solutions">+91 83280 51076</a>
+        <small>Mon–Fri: 9:00 AM – 6:00 PM</small>
+      </div>
     </div>
-
-    <div class="contact-item">
-      <svg aria-hidden="true" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zM4 8l8 5 8-5V6l-8 5-8-5v2z"/></svg>
-      <div class="contact-text"><a href="mailto:contact@rvnsolutions.com" aria-label="Email RVNS Solutions">contact@rvnsolutions.com</a></div>
+    <div class="info-row">
+      <i class="bi bi-envelope-fill ci" aria-hidden="true"></i>
+      <div class="info-main">
+        <a href="mailto:contact@rvnsolutions.com" aria-label="Email RVNS Solutions">contact@rvnsolutions.com</a>
+        <small>24/7 Email Support</small>
+      </div>
     </div>
-
-    <div class="contact-item">
-      <svg aria-hidden="true" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 12l-8-5V6l8 5 8-5v1z"/></svg>
-      <div class="contact-text">Mon - Fri: 9:00 AM to 6:00 PM</div>
+    <div class="info-row">
+      <i class="bi bi-globe2 ci" aria-hidden="true"></i>
+      <div class="info-main">
+        <a href="https://www.rvnssolutions.online" target="_blank" rel="noopener">www.rvnssolutions.online</a>
+      </div>
     </div>
-  </aside>
-
-  <section class="right-panel contact-form" aria-label="Contact form">
-    <h2>Send Us a Message</h2>
-    <form action="contact_process.php" method="POST" novalidate>
-      <label for="name">Full Name <span style="color:#d9534f">*</span></label>
-      <input id="name" name="name" type="text" placeholder="Your full name" class="form-control" required />
-
-      <label for="email" class="mt-3">Email Address <span style="color:#d9534f">*</span></label>
-      <input id="email" name="email" type="email" placeholder="you@example.com" class="form-control" required />
-
-      <label for="phone" class="mt-3">Phone Number</label>
-      <input id="phone" name="phone" type="tel" placeholder="+1 234 567 890" class="form-control" />
-
-      <label for="subject" class="mt-3">Subject</label>
-      <input id="subject" name="subject" type="text" placeholder="Subject (Optional)" class="form-control" />
-
-      <label for="message" class="mt-3">Your Message <span style="color:#d9534f">*</span></label>
-      <textarea id="message" name="message" rows="5" placeholder="Write your message here" class="form-control" required></textarea>
-
-      <button type="submit" class="btn btn-primary w-100 mt-4" aria-label="Send message">Send Message</button>
-    </form>
-  </section>
-  <div class="map-container" aria-label="Office location map" role="region" style="max-width:960px;margin:3rem auto;overflow:hidden;border-radius:24px;box-shadow:0 10px 45px rgba(20,205,141,0.25); height:320px;">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387143.0935913256!2d-74.19162167634545!3d40.69714961410045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c250b118ae708d%3A0x2ee4641e68000c4f!2sNew%20York%20City!5e0!3m2!1sen!2sus!4v1624456805391!5m2!1sen!2sus" width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="RVNS Solutions Location"></iframe>
+  </div>
+  <div class="social-bar mt-3">
+    <a href="https://wa.me/918328051076" class="whatsapp" title="WhatsApp" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+    <a href="https://www.linkedin.com/company/rvnssolutions" class="linkedin" title="LinkedIn" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+    <a href="https://www.youtube.com/@rvnssolutions" title="YouTube" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+  </div>
 </div>
-</main>
 
+<div class="map-container" aria-label="RVNS Solutions Office Location" role="region">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387143.0935913256!2d-74.19162167634545!3d40.69714961410045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c250b118ae708d%3A0x2ee4641e68000c4f!2sNew%20York%20City!5e0!3m2!1sen!2sus!4v1624456805391!5m2!1sen!2sus"
+    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+    title="RVNS Solutions Location"></iframe>
+</div>
 
-
-<footer>
-  <div class="text-center bg-dark text-light py-3">&copy; 2025 RVNS Solutions. All rights reserved.</div>
+<footer class="footer-bg bg-dark text-light py-5" role="contentinfo" aria-label="Site Footer">
+  <div class="container">
+    <div class="row gy-4 justify-content-between">
+      
+      <div class="col-12 col-md-3 text-center text-md-start">
+        <img src="logo.jpg" alt="RVNS Solutions" class="img-fluid mb-3" style="max-width: 160px;" />
+        <p class="fst-italic" style="max-width: 280px; margin: 0 auto 0 auto; font-size: 0.9rem;">
+          Empowering your IT journey with skills, projects, and innovation.
+        </p>
+      </div>
+      
+      <div class="col-6 col-md-2">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled lh-lg mb-0">
+          <li><a href="about.html" class="footer-link text-light text-decoration-none">About Us</a></li>
+          <li><a href="courses.html" class="footer-link text-light text-decoration-none">Courses</a></li>
+          <li><a href="internships.html" class="footer-link text-light text-decoration-none">Internships</a></li>
+          <li><a href="projects.html" class="footer-link text-light text-decoration-none">Projects</a></li>
+          <li><a href="contact.html" class="footer-link text-light text-decoration-none">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="col-6 col-md-3 text-center text-md-start">
+        <h5>Contact Us</h5>
+        <p class="mb-1"><i class="bi bi-geo-alt-fill me-2"></i>Adoni, Andhra Pradesh, India</p>
+        <p class="mb-1"><i class="bi bi-telephone-fill me-2"></i><a href="tel:+918328051076" class="footer-link text-light text-decoration-none">+91 8328051076</a></p>
+        <p><i class="bi bi-envelope-fill me-2"></i><a href="mailto:rvnssolutions@gmail.com" class="footer-link text-light text-decoration-none">rvnssolutions@gmail.com</a></p>
+      </div>
+      
+      <div class="col-12 col-md-3 text-center text-md-start">
+        <h5>Subscribe to Our Newsletter</h5>
+        <form onsubmit="event.preventDefault(); alert('Subscribed!');" class="d-flex flex-column flex-sm-row align-items-center" style="max-width: 320px; margin: auto;">
+          <input type="email" placeholder="Enter your email" required aria-label="Email" class="form-control mb-2 mb-sm-0 me-sm-2" />
+          <button type="submit" class="btn btn-primary w-100 w-sm-auto px-4">Subscribe</button>
+        </form>
+        <div class="social-icons mt-3 d-flex justify-content-center justify-content-md-start gap-3" style="font-size: 1.4rem;">
+          <a href="#" aria-label="Facebook" class="text-light"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Twitter" class="text-light"><i class="bi bi-twitter"></i></a>
+          <a href="#" aria-label="Instagram" class="text-light"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn" class="text-light"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="YouTube" class="text-light"><i class="bi bi-youtube"></i></a>
+          <a href="#" aria-label="WhatsApp" class="text-light"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-light small mt-4" style="opacity: 0.65;">
+      <a href="privacy.html" class="footer-link text-light text-decoration-none me-3">Privacy Policy</a>
+      <a href="terms.html" class="footer-link text-light text-decoration-none">Terms of Service</a>
+      <p class="mt-2 mb-0">© 2025 RVNS Solutions. All rights reserved.</p>
+    </div>
+  </div>
 </footer>
+
+<!-- Bootstrap 5 JS bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

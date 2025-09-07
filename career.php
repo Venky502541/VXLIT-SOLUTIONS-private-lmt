@@ -6,19 +6,19 @@ use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
 
-// Configuration
+// Configuration constants
 define('ADMIN_SECRET', 'SuperSecret123');
 define('JOBS_FILE', __DIR__ . '/jobs.json');
 define('APPLICANTS_FILE', __DIR__ . '/applicants.csv');
-
 define('SMTP_HOST', 'smtp.gmail.com');
 define('SMTP_USER', 'rvnssolutions@gmail.com');
-define('SMTP_PASS', 'ernfdzpcwzwrrypf'); // your Gmail app password
+define('SMTP_PASS', 'ernfdzpcwzwrrypf'); // Gmail app password
 define('SMTP_PORT', 587);
 
+// Load jobs data from JSON
 $jobs = file_exists(JOBS_FILE) ? json_decode(file_get_contents(JOBS_FILE), true) : [];
 
-$showAdminLogin = false; 
+$showAdminLogin = false;
 $adminLoginError = null;
 
 // Handle Admin Login
@@ -39,7 +39,7 @@ if (isset($_GET['logout'])) {
 }
 
 // Admin add job
-if (isset($_SESSION['is_admin'], $_POST['add_job'])) {
+if (isset($_SESSION['is_admin']) && isset($_POST['add_job'])) {
     $title = trim($_POST['title']);
     $location = trim($_POST['location']);
     $description = trim($_POST['description']);
@@ -58,7 +58,7 @@ if (isset($_SESSION['is_admin'], $_POST['add_job'])) {
 }
 
 // Admin delete job
-if (isset($_SESSION['is_admin'], $_GET['delete'])) {
+if (isset($_SESSION['is_admin']) && isset($_GET['delete'])) {
     $deleteId = intval($_GET['delete']);
     $jobs = array_values(array_filter($jobs, fn($job) => $job['id'] !== $deleteId));
     file_put_contents(JOBS_FILE, json_encode($jobs, JSON_PRETTY_PRINT));
@@ -70,6 +70,7 @@ $application_data = [];
 $application_success = null;
 $application_error = null;
 
+// Application submission handling
 if (isset($_POST['apply'])) {
     $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
     $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
@@ -114,7 +115,7 @@ if (isset($_POST['apply'])) {
         $csvContent = file_get_contents(APPLICANTS_FILE);
 
         try {
-            // HR Mail
+            // HR email
             $mailHR = new PHPMailer(true);
             $mailHR->isSMTP();
             $mailHR->Host = SMTP_HOST;
@@ -141,7 +142,7 @@ if (isset($_POST['apply'])) {
                 <p><b>Cover Letter:</b><br>" . nl2br(htmlspecialchars($cover)) . "</p>";
             $mailHR->send();
 
-            // Applicant Confirmation
+            // Applicant confirmation email
             $mailApplicant = new PHPMailer(true);
             $mailApplicant->isSMTP();
             $mailApplicant->Host = SMTP_HOST;
@@ -169,7 +170,6 @@ if (isset($_POST['apply'])) {
             $_SESSION['application_success'] = $application_data;
             header("Location: success.php");
             exit;
-
         } catch (Exception $e) {
             $application_error = "Mailer Error: " . $mailHR->ErrorInfo;
         }
@@ -179,58 +179,63 @@ if (isset($_POST['apply'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <title>RVNS Careers</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
-    <style>
-        body { font-family: 'Poppins', sans-serif; background:#f9fafb; color:#222; margin:0; }
-        nav.navbar { background:#0a2239; }
-        nav .navbar-brand, nav .nav-link { color:#16db93 !important; font-weight:600; }
-        nav .nav-link.active, nav .nav-link:hover { color:#a7ffdb !important; }
-        .hero { min-height:340px; background: linear-gradient(135deg, rgba(22,219,147,0.9), rgba(6,48,121,0.85)), url('career-hero.jpg') center center/cover no-repeat; color:#fff; display:flex; flex-direction: column; justify-content:center; text-align:center; padding:1rem;}
-        .hero h1 { font-size: 3rem; font-weight: 900; margin-bottom: 1rem; }
-        main { max-width:960px; margin: 2rem auto 5rem; padding: 0 1rem; }
-        h2 { font-weight: 900; color: #0a263f; margin-bottom: 1.5rem; }
-        .job-listing { list-style:none; padding:0; margin-bottom: 2rem;}
-        .job-listing li { background:#e6f7f4; border:2px solid #16db93; border-radius:16px; padding:1rem 1.5rem; margin-bottom: 1rem; position: relative;}
-        .job-listing strong { display:block; font-size:1.2rem; color:#0a4433;}
-        .apply-btn { position:absolute; top: 20px; right: 20px; background:#16db93; border:none; color:#fff; padding: 0.375rem 0.7rem; border-radius: 0.5rem; cursor:pointer;}
-        .application-section { display:none; background:#fff; padding: 2rem; border-radius: 20px; box-shadow: 0 8px 25px rgba(22,219,147,0.15); margin-top: 2rem; }
-        .application-section.active { display:block; }
-        form label { font-weight:600; margin-top: 1rem; display: block; }
-        form input[type=text], form input[type=email], form input[type=tel], form textarea, form select { width: 100%; padding: 0.75rem; border: 2px solid #16db93; border-radius:10px; margin-top: 0.5rem; resize: vertical;}
-        form button { margin-top: 1.5rem; background: #16db93; border:none; color:#fff; font-weight:700; font-size: 1.2rem; padding:1rem; border-radius: 20px; cursor:pointer; width: 100%; }
-        form button:hover { background: #11895a; }
-        .alert { padding: 1rem; border-radius: 12px; margin-bottom: 1rem; }
-        .alert-success { background: #d1f0db; color: #155724; }
-        .alert-error { background: #fccfcf; color: #721c24; }
-        /* Admin panel */
-        #adminLoginPanel { display:none; max-width:400px; margin:2rem auto; background:#fff; padding:1.5rem; border-radius:20px; box-shadow: 0 10px 25px rgba(22,219,147,0.15);}
-        #adminPanel { max-width:700px; margin: 2rem auto; background:#fff; padding:1.5rem; border-radius: 20px; box-shadow: 0 10px 25px rgba(22,219,147,0.15);}
-        #adminPanel h2, #adminLoginPanel h2 { margin-bottom:1rem;}
-        #adminToggle { position: fixed; bottom:16px; right:16px; background:#16db93; color:#fff; border:none; border-radius:50%; width:48px; height:48px; font-size:24px; cursor:pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.3);}
-        @media (max-width: 768px) {
-          .hero h1 { font-size: 2.3rem;}
-        }
-    </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>RVNS Careers</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+  body { font-family: 'Poppins', sans-serif; background:#f9fafb; color:#222; margin:0; }
+  nav.navbar { background:#0a2239; }
+  nav .navbar-brand, nav .nav-link { color:#16db93 !important; font-weight:600; }
+  nav .nav-link.active, nav .nav-link:hover { color:#a7ffdb !important; }
+  .hero { min-height:340px; background: linear-gradient(135deg, rgba(22,219,147,0.9), rgba(6,48,121,0.85)), url('career-hero.jpg') center center/cover no-repeat; color:#fff; display:flex; flex-direction: column; justify-content:center; text-align:center; padding:1rem;}
+  .hero h1 { font-size: 3rem; font-weight: 900; margin-bottom: 1rem; }
+  main { max-width:960px; margin: 2rem auto 5rem; padding: 0 1rem; }
+  h2 { font-weight: 900; color: #0a263f; margin-bottom: 1.5rem; }
+  .job-listing { list-style:none; padding:0; margin-bottom: 2rem;}
+  .job-listing li { background:#e6f7f4; border:2px solid #16db93; border-radius:16px; padding:1rem 1.5rem; margin-bottom: 1rem; position: relative;}
+  .job-listing strong { display:block; font-size:1.2rem; color:#0a4433;}
+  .apply-btn { position:absolute; top: 20px; right: 20px; background:#16db93; border:none; color:#fff; padding: 0.375rem 0.7rem; border-radius: 0.5rem; cursor:pointer;}
+  .application-section { display:none; background:#fff; padding: 2rem; border-radius: 20px; box-shadow: 0 8px 25px rgba(22,219,147,0.15); margin-top: 2rem; }
+  .application-section.active { display:block; }
+  form label { font-weight:600; margin-top: 1rem; display: block; }
+  form input[type=text], form input[type=email], form input[type=tel], form textarea, form select { width: 100%; padding: 0.75rem; border: 2px solid #16db93; border-radius:10px; margin-top: 0.5rem; resize: vertical;}
+  form button { margin-top: 1.5rem; background: #16db93; border:none; color:#fff; font-weight:700; font-size: 1.2rem; padding:1rem; border-radius: 20px; cursor:pointer; width: 100%; }
+  form button:hover { background: #11895a; }
+  .alert { padding: 1rem; border-radius: 12px; margin-bottom: 1rem; }
+  .alert-success { background: #d1f0db; color: #155724; }
+  .alert-error { background: #fccfcf; color: #721c24; }
+  /* Admin panel */
+  #adminLoginPanel { display:none; max-width:400px; margin:2rem auto; background:#fff; padding:1.5rem; border-radius:20px; box-shadow: 0 10px 25px rgba(22,219,147,0.15);}
+  #adminPanel { max-width:700px; margin: 2rem auto; background:#fff; padding:1.5rem; border-radius: 20px; box-shadow: 0 10px 25px rgba(22,219,147,0.15);}
+  #adminPanel h2, #adminLoginPanel h2 { margin-bottom:1rem;}
+  #adminToggle { position: fixed; bottom:16px; right:16px; background:#16db93; color:#fff; border:none; border-radius:50%; width:48px; height:48px; font-size:24px; cursor:pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.3);}
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 2.3rem;}
+  }
+</style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg sticky-top">
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark" style="background-color: #0a2239;">
   <div class="container">
-    <a href="index.html" class="navbar-brand">RVNS Solutions</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
-      aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="navMenu">
+    <a class="navbar-brand" href="index.php" style="font-weight:700; color:#16db93; letter-spacing: 1.5px; font-size:1.5rem; font-family: 'Poppins', sans-serif;">
+      RVNS Solutions
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav ms-auto text-uppercase">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="courses.html" class="nav-link">Courses</a></li>
-        <li><a href="internships.html" class="nav-link">Internships</a></li>
-        <li><a href="projects.html" class="nav-link">Projects</a></li>
-        <li><a href="development.html" class="nav-link">Development</a></li>
-        <li><a href="career.php" class="nav-link active">Careers</a></li>
-        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-item"><a href="index.html" class="nav-link" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="courses.html" class="nav-link">Courses</a></li>
+        <li class="nav-item"><a href="internships.html" class="nav-link">Internships</a></li>
+        <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+        <li class="nav-item"><a href="development.html" class="nav-link">Development</a></li>
+        <li class="nav-item"><a href="career.php" class="nav-link active">Career</a></li>
+        <li class="nav-item"><a href="feedback.php" class="nav-link">FAQ</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
       </ul>
     </div>
   </div>
@@ -258,80 +263,20 @@ if (isset($_POST['apply'])) {
   box-sizing: border-box;
 ">
 
-  <h1 style="
-    font-weight: 900;
-    font-size: 2.8rem;
-    margin-bottom: 0.5rem;
-    line-height: 1.1em;
-    max-width: 90%;
-    ">
-    Join Our Team
-  </h1>
+  <h1 style="font-weight: 900; font-size: 2.8rem; margin-bottom: 0.5rem; line-height: 1.1em; max-width: 90%;">Join Our Team</h1>
 
-  <p style="
-    max-width: 620px;
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-    font-weight: 400;
-    line-height: 1.5;
-    ">
+  <p style="max-width: 620px; font-size: 1.2rem; margin-bottom: 1.5rem; font-weight: 400; line-height: 1.5;">
     Shape your future with RVNS Solutions. Explore exciting career opportunities and grow professionally with a team that values innovation.
   </p>
 
-  <ul style="
-    list-style: disc inside;
-    max-width: 620px;
-    font-size: 1rem;
-    color: #a1e6c0;
-    padding-left: 0;
-    margin: 0;
-    text-align: left;
-    ">
+  <ul style="list-style: disc inside; max-width: 620px; font-size: 1rem; color: #a1e6c0; padding-left: 0; margin: 0; text-align: left;">
     <li>Work on impactful projects with cutting-edge technology</li>
     <li>Collaborative and supportive team culture</li>
     <li>Competitive salary and comprehensive benefits</li>
     <li>Flexible work schedules supporting work-life balance</li>
     <li>Continuous learning and career advancement opportunities</li>
   </ul>
-
-  <style>
-    @media (max-width: 768px) {
-      .hero {
-        padding: 1.5rem 1.5rem;
-        min-height: 260px;
-      }
-      .hero h1 {
-        font-size: 2rem !important;
-        max-width: 100% !important;
-      }
-      .hero p {
-        font-size: 1rem !important;
-        max-width: 100% !important;
-      }
-      .hero ul {
-        font-size: 0.9rem !important;
-        max-width: 100% !important;
-      }
-    }
-    @media (max-width: 400px) {
-      .hero {
-        padding: 1rem 1rem;
-        min-height: 220px;
-      }
-      .hero h1 {
-        font-size: 1.6rem !important;
-      }
-      .hero p {
-        font-size: 0.9rem !important;
-      }
-      .hero ul {
-        font-size: 0.85rem !important;
-      }
-    }
-  </style>
 </section>
-
-
 
 <main class="container" role="main">
   <section aria-label="Current Job Openings">
@@ -348,9 +293,9 @@ if (isset($_POST['apply'])) {
       <ul class="job-listing" role="list">
         <?php foreach ($jobs as $job) : ?>
           <li tabindex="0">
-            <strong><?=htmlspecialchars($job['title']);?></strong> - <?=htmlspecialchars($job['location']);?>
-            <p><?=htmlspecialchars($job['description']);?></p>
-            <button class="apply-btn" data-jobid="<?= $job['id']; ?>">Apply Now</button>
+            <strong><?=htmlspecialchars($job['title'])?></strong> - <?=htmlspecialchars($job['location'])?>
+            <p><?=htmlspecialchars($job['description'])?></p>
+            <button class="apply-btn" data-jobid="<?= $job['id'] ?>">Apply Now</button>
           </li>
         <?php endforeach; ?>
       </ul>
@@ -360,64 +305,35 @@ if (isset($_POST['apply'])) {
   <section id="applicationSection" class="application-section" aria-label="Job application form">
     <h2>Apply for a Job</h2>
     <form method="POST" enctype="multipart/form-data" novalidate>
-      <input type="hidden" name="apply" value="1"/>
+      <input type="hidden" name="apply" value="1" />
       <label for="name">Full Name*</label>
-      <input id="name" name="name" type="text" required value="<?=htmlspecialchars($application_data['name'] ?? '')?>"/>
+      <input id="name" name="name" type="text" required value="<?=htmlspecialchars($application_data['name'] ?? '')?>" />
       <label for="email">Email*</label>
-      <input id="email" name="email" type="email" required value="<?=htmlspecialchars($application_data['email'] ?? '')?>"/>
+      <input id="email" name="email" type="email" required value="<?=htmlspecialchars($application_data['email'] ?? '')?>" />
       <label for="phone">Phone</label>
-      <input id="phone" name="phone" type="tel" value="<?=htmlspecialchars($application_data['phone'] ?? '')?>"/>
+      <input id="phone" name="phone" type="tel" value="<?=htmlspecialchars($application_data['phone'] ?? '')?>" />
       <label for="job_id">Select Job*</label>
       <select id="job_id" name="job_id" required>
-        <option value="" disabled <?= !isset($application_data['job_id']) ? 'selected' : '' ?>>Select a job</option>
-        <?php foreach ($jobs as $job): ?>
-         <option value="<?= $job['id'] ?>" <?= (isset($application_data['job_id']) && $application_data['job_id'] == $job['id']) ? 'selected' : '' ?>>
-           <?= htmlspecialchars($job['title'] . ' - ' . $job['location']) ?>
-         </option>
-        <?php endforeach;?>
+        <option value="" disabled <?=!isset($application_data['job_id']) ? 'selected' : ''?>>Select a job</option>
+        <?php foreach ($jobs as $job) : ?>
+          <option value="<?= $job['id'] ?>" <?= (isset($application_data['job_id']) && $application_data['job_id'] == $job['id']) ? 'selected' : '' ?>>
+            <?=htmlspecialchars($job['title'] . ' - ' . $job['location'])?>
+          </option>
+        <?php endforeach; ?>
       </select>
       <label for="cover_letter">Cover Letter</label>
       <textarea id="cover_letter" name="cover_letter" rows="5"><?=htmlspecialchars($application_data['cover_letter'] ?? '')?></textarea>
-      <label for="resume">Upload Resume* (PDF, DOC, DOCX)</label>
-      <input id="resume" name="resume" type="file" accept=".pdf,.doc,.docx" required/>
+      <label for="resume">Upload Resume (PDF/DOC/DOCX)*</label>
+      <input id="resume" name="resume" type="file" accept=".pdf,.doc,.docx" required />
       <button type="submit">Submit Application</button>
     </form>
   </section>
-<section class="culture-section" data-aos="fade-up" data-aos-delay="400" aria-label="Company Culture" style="
- max-width: 900px;
- margin: 3rem auto;
- padding: 2rem 1.5rem;
- background: #daf9ec;
- border-radius: 20px;
- box-shadow: 0 8px 30px rgba(22, 219, 147, 0.15);
- color: #115f51;
- font-family: 'Poppins', sans-serif;
-">
-  <h2 class="section-title" style="font-weight: 900; font-size: 2.5rem; margin-bottom: 1rem; color: #0a263f;">Our Culture & Values</h2>
-  <p style="font-size: 1.15rem; line-height: 1.6; margin-bottom: 1.5rem;">
-    At RVNS Solutions, we foster a culture of innovation, collaboration, and continuous learning. We believe in empowering our team members to achieve their best, supporting growth both professionally and personally.
-  </p>
-  <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 1.05rem;">
-    <div style="flex: 1 1 260px; background: #16db93; color: white; padding: 1.2rem 1rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(1,65,30,0.15);">
-      <h3 style="font-weight: 700; margin-bottom: 0.5rem;">Innovation</h3>
-      <p>We champion creativity and encourage our team to pioneer solutions that set new industry standards.</p>
-    </div>
-    <div style="flex: 1 1 260px; background: #11895a; color: white; padding: 1.2rem 1rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(1,40,20,0.15);">
-      <h3 style="font-weight: 700; margin-bottom: 0.5rem;">Collaboration</h3>
-      <p>Teamwork is at the heart of what we do. We support each other and work together to achieve common goals.</p>
-    </div>
-    <div style="flex: 1 1 260px; background: #0a563d; color: white; padding: 1.2rem 1rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,30,10,0.15);">
-      <h3 style="font-weight: 700; margin-bottom: 0.5rem;">Growth</h3>
-      <p>We invest in continuous learning and provide opportunities that foster both personal and professional development.</p>
-    </div>
-  </div>
-</section>
 
   <?php if (!isset($_SESSION['is_admin'])): ?>
   <section id="adminLoginPanel">
-    <h2>Admin Login <small style="font-weight:normal">(Press Ctrl+Shift+K to Toggle)</small></h2>
+    <h2>Admin Login <small style="font-weight: normal;">(Press Ctrl+Shift+K to Toggle)</small></h2>
     <form method="POST">
-      <input name="secret_key" type="password" placeholder="Enter secret key" required/>
+      <input name="secret_key" type="password" placeholder="Enter secret key" required />
       <button name="admin_login" type="submit">Login</button>
     </form>
     <?php if ($adminLoginError): ?>
@@ -425,9 +341,9 @@ if (isset($_POST['apply'])) {
     <?php endif; ?>
   </section>
   <?php else: ?>
-  <section id="adminPanel" aria-label="Admin Panel" style="margin-top:2rem;">
+  <section id="adminPanel" aria-label="Admin Panel" style="margin-top: 2rem;">
     <h2>Manage Job Openings</h2>
-    <form method="POST" style="margin-bottom:2rem;">
+    <form method="POST" style="margin-bottom: 2rem;">
       <input type="hidden" name="add_job" value="1" />
       <label>Job Title:</label>
       <input name="title" type="text" required />
@@ -440,43 +356,37 @@ if (isset($_POST['apply'])) {
     <h3>Current Jobs</h3>
     <ul>
       <?php foreach ($jobs as $job): ?>
-        <li>
-          <strong><?=htmlspecialchars($job['title']); ?></strong> - <?=htmlspecialchars($job['location']); ?>
-          <a href="?delete=<?= $job['id']; ?>" onclick="return confirm('Delete this job?');" style="color:#d9534f; margin-left:1rem;">Delete</a>
+        <li><strong><?=htmlspecialchars($job['title'])?></strong> - <?=htmlspecialchars($job['location'])?>
+          <a href="?delete=<?= $job['id'] ?>" onclick="return confirm('Delete this job?');" style="color:#d9534f; margin-left:1rem;">Delete</a>
         </li>
       <?php endforeach; ?>
     </ul>
     <a href="?logout=1" class="btn btn-danger mt-3">Logout</a>
   </section>
   <?php endif; ?>
+
 </main>
 
-<button id="adminToggle" title="Toggle Admin Login" aria-label="Toggle Admin Login" style="
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  background: #16db93;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  font-size: 24px;
-  cursor: pointer;
-  display:none;
-  z-index: 1000;"></button>
-  <footer class="footer-bg" role="contentinfo" aria-label="Site Footer" style="background-color:#0a2239; color:#d2dfe4; padding:40px 20px 20px;">
+
+<footer class="footer-bg bg-dark text-light py-5" role="contentinfo" aria-label="Site Footer">
   <div class="container">
-    <div class="footer-columns d-flex flex-column flex-md-row justify-content-between flex-wrap">
+    <div class="row gy-4 justify-content-between">
       
-      <div class="footer-column text-center text-md-start mb-4 mb-md-0" style="flex:1;">
-        <img src="logo.jpg" alt="RVNS Solutions" class="footer-logo" style="max-width:160px; margin-bottom:15px;" />
-        <p class="fst-italic" style="font-size:0.9rem; max-width:300px;">Empowering your IT journey with skills, projects, and innovation.</p>
-      </div>
+<div class="row align-items-center">
+  <div class="col-12 col-md-3 text-center text-md-start py-3">
+    <img src="logo1.jpg" alt="RVNS Solutions Logo"
+         class="img-fluid"
+         style="max-width:160px; width:100%; height:auto; margin-bottom:14px;" />
+    <p class="fst-italic text-light" style="font-size:1rem; max-width:260px; font-weight:500; opacity:0.85; margin:0;">
+      Empowering your IT journey with skills, projects, and innovation.
+    </p>
+  </div>
+  <!-- Other columns here -->
+
       
-      <div class="footer-column mb-4 mb-md-0" style="flex:1;">
+      <div class="col-6 col-md-2">
         <h5>Quick Links</h5>
-        <ul class="list-unstyled" style="line-height:2;">
+        <ul class="list-unstyled lh-lg mb-0">
           <li><a href="about.html" class="footer-link text-light text-decoration-none">About Us</a></li>
           <li><a href="courses.html" class="footer-link text-light text-decoration-none">Courses</a></li>
           <li><a href="internships.html" class="footer-link text-light text-decoration-none">Internships</a></li>
@@ -485,68 +395,55 @@ if (isset($_POST['apply'])) {
         </ul>
       </div>
       
-      <div class="footer-column mb-4 mb-md-0" style="flex:1;">
+      <div class="col-6 col-md-3 text-center text-md-start">
         <h5>Contact Us</h5>
-        <p><i class="bi bi-geo-alt-fill me-2"></i>Adoni, Andhra Pradesh, India</p>
-        <p><i class="bi bi-telephone-fill me-2"></i><a href="tel:+918328051076" class="footer-link text-light text-decoration-none">+91 8328051076</a></p>
+        <p class="mb-1"><i class="bi bi-geo-alt-fill me-2"></i>Adoni, Andhra Pradesh, India</p>
+        <p class="mb-1"><i class="bi bi-telephone-fill me-2"></i><a href="tel:+918328051076" class="footer-link text-light text-decoration-none">+91 8328051076</a></p>
         <p><i class="bi bi-envelope-fill me-2"></i><a href="mailto:rvnssolutions@gmail.com" class="footer-link text-light text-decoration-none">rvnssolutions@gmail.com</a></p>
       </div>
       
-      <div class="footer-column text-center text-md-start" style="flex:1;">
+      <div class="col-12 col-md-3 text-center text-md-start">
         <h5>Subscribe to Our Newsletter</h5>
-        <form class="newsletter-form d-flex flex-column flex-sm-row" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');" style="max-width:320px;">
+        <form onsubmit="event.preventDefault(); alert('Subscribed!');" class="d-flex flex-column flex-sm-row align-items-center" style="max-width: 320px; margin: auto;">
           <input type="email" placeholder="Enter your email" required aria-label="Email" class="form-control mb-2 mb-sm-0 me-sm-2" />
-          <button type="submit" class="btn btn-success">Subscribe</button>
+          <button type="submit" class="btn btn-primary w-100 w-sm-auto px-4">Subscribe</button>
         </form>
-        <div class="social-icons mt-3" role="navigation" aria-label="Social Media Links" style="font-size: 1.5rem;">
-          <a href="#" aria-label="Facebook" target="_blank" class="text-light me-3"><i class="bi bi-facebook"></i></a>
-          <a href="#" aria-label="Twitter" target="_blank" class="text-light me-3"><i class="bi bi-twitter"></i></a>
-          <a href="#" aria-label="Instagram" target="_blank" class="text-light me-3"><i class="bi bi-instagram"></i></a>
-          <a href="#" aria-label="LinkedIn" target="_blank" class="text-light me-3"><i class="bi bi-linkedin"></i></a>
-          <a href="#" aria-label="YouTube" target="_blank" class="text-light me-3"><i class="bi bi-youtube"></i></a>
-          <a href="#" aria-label="Telegram" target="_blank" class="text-light me-3"><i class="bi bi-telegram"></i></a>
-          <a href="#" aria-label="Threads" target="_blank" class="text-light me-3"><i class="bi bi-threads"></i></a>
-          <a href="#" aria-label="GitHub" target="_blank" class="text-light me-3"><i class="bi bi-github"></i></a>
-          <a href="https://wa.me/918328051076" aria-label="WhatsApp" target="_blank" class="text-light"><i class="bi bi-whatsapp"></i></a>
+        <div class="social-icons mt-3 d-flex justify-content-center justify-content-md-start gap-3" style="font-size: 1.4rem;">
+          <a href="#" aria-label="Facebook" class="text-light"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Twitter" class="text-light"><i class="bi bi-twitter"></i></a>
+          <a href="#" aria-label="Instagram" class="text-light"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn" class="text-light"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="YouTube" class="text-light"><i class="bi bi-youtube"></i></a>
+          <a href="#" aria-label="WhatsApp" class="text-light"><i class="bi bi-whatsapp"></i></a>
         </div>
       </div>
     </div>
-    <div class="text-center text-light small mt-4" style="opacity: 0.7;">
-      <a href="privacy.html" class="footer-link text-light me-3 text-decoration-none">Privacy Policy</a>
-      <a href="terms.html" class="footer-link text-light me-3 text-decoration-none">Terms of Service</a>
-      &copy; 2025 RVNS Solutions. All Rights Reserved.
+    <div class="text-center text-light small mt-4" style="opacity: 0.65;">
+      <a href="privacy.html" class="footer-link text-light text-decoration-none me-3">Privacy Policy</a>
+      <a href="terms.html" class="footer-link text-light text-decoration-none">Terms of Service</a>
+      <p class="mt-2 mb-0">© 2025 RVNS Solutions. All rights reserved.</p>
     </div>
   </div>
 </footer>
 
+<!-- Bootstrap 5 JS bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const applicationSection = document.getElementById('applicationSection');
-  document.querySelectorAll('.apply-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      const jobId = button.getAttribute('data-jobid');
-      applicationSection.classList.add('active');
-      document.getElementById('job_id').value = jobId;
-      window.scrollTo({top: applicationSection.offsetTop - 50, behavior: 'smooth'});
-      document.getElementById('name').focus();
-    });
-  });
-
   const adminLoginPanel = document.getElementById('adminLoginPanel');
-  const adminToggleBtn = document.getElementById('adminToggle');
 
-  const toggleAdminPanel = () => {
-    if (adminLoginPanel) {
-      adminLoginPanel.style.display = (adminLoginPanel.style.display === 'block') ? 'none' : 'block';
-      if (adminLoginPanel.style.display === 'block') {
-        adminLoginPanel.scrollIntoView({behavior: 'smooth', block: 'center'});
-      }
+  function toggleAdminPanel() {
+    if (!adminLoginPanel) return;
+    adminLoginPanel.style.display = adminLoginPanel.style.display === 'block' ? 'none' : 'block';
+    if (adminLoginPanel.style.display === 'block') {
+      adminLoginPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-  };
+  }
 
-  adminToggleBtn.addEventListener('click', toggleAdminPanel);
-
+  // Listen for Ctrl+Shift+K and toggle admin login panel
   document.addEventListener('keydown', e => {
     if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'k') {
       e.preventDefault();
@@ -554,6 +451,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
 </script>
 </body>
 </html>
