@@ -176,33 +176,68 @@ body { font-family: 'Poppins', sans-serif; background:#f5f8fa; color: #1d2d50; m
 }
 
 </style>
+<li class="nav-item"><a href="about.html" class="nav-link active" aria-current="page">About</a></li>
+<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
 </head>
 <body>
-
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #0a2239;">
   <div class="container">
-    <a class="navbar-brand" href="index.html" style="font-weight:700; color:#16db93; letter-spacing:1.5px; font-family:'Poppins', sans-serif; font-size:1.5rem;">
+    <a class="navbar-brand" href="index.html" style="font-weight:700; color:#16db93; letter-spacing: 1.5px; font-family: 'Poppins', sans-serif; font-size: 1.5rem;">
       RVNS Solutions
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" 
       aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml;charset=utf8,%3csvg viewBox=%270 0 30 30%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3cpath stroke=%27rgba(255,255,255,1)%27 stroke-width=%273%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e');"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="mainNav">
-      <ul class="navbar-nav ms-auto text-uppercase" id="navMenu">
-        <li class="nav-item"><a href="index.html" class="nav-link" aria-current="page">Home</a></li>
+      <ul class="navbar-nav ms-auto text-uppercase">
+        <li class="nav-item"><a href="index.html" class="nav-link active" aria-current="page">Home</a></li>
         <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
         <li class="nav-item"><a href="courses.html" class="nav-link">Courses</a></li>
         <li class="nav-item"><a href="internships.html" class="nav-link">Internships</a></li>
         <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
         <li class="nav-item"><a href="development.html" class="nav-link">Development</a></li>
-        <li class="nav-item"><a href="career.php" class="nav-link">Career</a></li>
-        <li class="nav-item"><a href="feedback.php" class="nav-link">FAQ</a></li>
+        <li class="nav-item"><a href="career.html" class="nav-link">Career</a></li>
+        <li class="nav-item"><a href="feedback.html" class="nav-link">FAQ</a></li>
         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
       </ul>
     </div>
   </div>
 </nav>
+
+<style>
+.navbar-brand {
+  font-weight: 700;
+  color: #16db93 !important;
+  letter-spacing: 1.5px;
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: #16db93;
+  font-weight: 600;
+  padding: 0.45rem 0.75rem;
+  transition: color 0.3s ease;
+  letter-spacing: 0.04em;
+}
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:focus {
+  color: #a7ffdb;
+  outline: none;
+}
+.navbar-dark .navbar-nav .nav-link.active {
+  color: #a7ffdb;
+  font-weight: 700;
+  border-bottom: 3px solid #16db93;
+  padding-bottom: 0.35rem;
+}
+.navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255,255,255,1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+</style>
+
+<!-- Bootstrap 5 JS (required for toggler) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <style>
   .navbar-brand {
