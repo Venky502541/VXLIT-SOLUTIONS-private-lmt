@@ -179,28 +179,94 @@ body { font-family: 'Poppins', sans-serif; background:#f5f8fa; color: #1d2d50; m
 </head>
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg sticky-top">
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark" style="background-color: #0a2239;">
   <div class="container">
-    <a class="navbar-brand" href="#">RVNS Solutions</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="index.php" style="font-weight:700; color:#16db93; letter-spacing: 1.5px; font-size:1.5rem; font-family: 'Poppins', sans-serif;">
+      RVNS Solutions
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" 
+      aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav ms-auto text-uppercase">
-        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
-        <li class="nav-item"><a class="nav-link" href="internships.html">Internships</a></li>
-        <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="development.html">Development</a></li>
-        <li class="nav-item"><a class="nav-link" href="career.php">Career</a></li>
-        <li class="nav-item"><a class="nav-link" href="feedback.php">FAQ</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a href="index.html" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="courses.html" class="nav-link">Courses</a></li>
+        <li class="nav-item"><a href="internships.html" class="nav-link">Internships</a></li>
+        <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+        <li class="nav-item"><a href="development.html" class="nav-link">Development</a></li>
+        <li class="nav-item"><a href="career.php" class="nav-link">Career</a></li>
+        <li class="nav-item"><a href="feedback.php" class="nav-link">FAQ</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
       </ul>
     </div>
   </div>
 </nav>
+
+<style>
+  /* Navbar brand */
+  .navbar-brand {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Nav link styles */
+  .navbar-dark .navbar-nav .nav-link {
+    color: #16db93;
+    font-weight: 600;
+    padding: 0.45rem 0.75rem;
+    transition: color 0.3s ease;
+    letter-spacing: 0.04em;
+  }
+
+  .navbar-dark .navbar-nav .nav-link:hover,
+  .navbar-dark .navbar-nav .nav-link:focus {
+    color: #a7ffdb;
+    outline: none;
+  }
+
+  .navbar-dark .navbar-nav .nav-link.active {
+    color: #a7ffdb;
+    font-weight: 700;
+    border-bottom: 3px solid #16db93;
+    padding-bottom: 0.35rem;
+  }
+
+  /* Navbar toggler */
+  .navbar-dark .navbar-toggler-icon {
+    filter: invert(1);
+  }
+
+  /* Responsive font sizes */
+  @media (max-width: 576px) {
+    .navbar-brand {
+      font-size: 1.15rem;
+      letter-spacing: 0.02em;
+    }
+    .navbar-dark .navbar-nav .nav-link {
+      padding: 0.4rem 0.5rem;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<!-- Bootstrap 5 JS (required for toggler) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<style>
+  /* Nav link color overrides */
+  .navbar-dark .navbar-nav .nav-link {
+    color: #16db93;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  .navbar-dark .navbar-nav .nav-link.active,
+  .navbar-dark .navbar-nav .nav-link:hover {
+    color: #a1f5d0;
+  }
+</style>
 
 <!-- Hero Section -->
 <section class="hero-section">
@@ -208,7 +274,7 @@ body { font-family: 'Poppins', sans-serif; background:#f5f8fa; color: #1d2d50; m
     <h1>Unleash Your IT Potential with India’s Leading Mentor Platform</h1>
     <div class="animated-text" id="typed-text"></div>
     <p>RVNS Solutions delivers powerful career-focused training, project-based internships, and cutting-edge development to drive your success in tech and beyond.</p>
-    <a href="courses.html" class="btn-explore">Explore All Programs</a>
+    <a href="courses.html" class="btn-explore">Explore All Programs</a><pre>      </pre>
     <a href="contact.html" class="btn-contact">Contact Us</a>
   </div>
 </section>
