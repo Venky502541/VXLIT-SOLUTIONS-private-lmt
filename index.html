@@ -27,7 +27,7 @@ body { font-family: 'Poppins', sans-serif; background:#f5f8fa; color: #1d2d50; m
 .hero-content h1 { font-weight:850; font-size:2.3rem; margin-bottom:1.1rem; }
 .animated-text { font-weight:700; font-size:1.25rem; min-height:44px; color:#ffeb3b; margin-bottom:1.2rem; }
 .hero-content p { font-size:1.1rem; margin-bottom:2rem; }
-.btn-explore, .btn-contact { background:#16db93; padding:14px 42px; border:none; border-radius:30px; color:#0a2239; font-weight:700; font-size:1.12rem; box-shadow:0 5px 16px #0a223980; transition:.18s; }
+.btn-explore, .btn-contact { background:#16db93; padding:10px 30px; border:none; border-radius:30px; color:#0a2239; font-weight:700; font-size:1.08rem; box-shadow:0 5px 16px #0a223980; transition:.18s; }
 .btn-explore:hover, .btn-contact:hover { background:#12b880; color:white; }
 .btn-contact { background: none; border:2px solid #16db93; color:white; margin-left:8px;}
 .btn-contact:hover { background:#16db93; color:#0a2239;}
@@ -297,22 +297,16 @@ body { font-family: 'Poppins', sans-serif; background:#f5f8fa; color: #1d2d50; m
   }
 </style>
 
-<section class="hero-section" style="background: linear-gradient(135deg, #18616c 0%, #3bd5b0 100%); position:relative; padding:64px 0 32px 0;">
-  <div class="container">
-    <div class="hero-content text-center mx-auto" style="max-width:480px;">
-      <h1 class="fw-bold mb-3" style="font-size:2.1rem;">Unleash Your IT Potential with India’s Leading Mentor Platform</h1>
-      <div class="animated-text mb-2" id="typed-text"></div>
-      <p class="mb-4" style="font-size:1.12rem; color:#e4f6f2;">
-        RVNS Solutions delivers powerful career-focused training, project-based internships, and cutting-edge development to drive your success in tech and beyond.
-      </p>
-      <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
-        <a href="courses.html" class="btn btn-lg btn-explore fw-semibold shadow-sm">Explore All Programs</a>
-        <a href="contact.html" class="btn btn-lg btn-contact fw-semibold shadow-sm">Contact Us</a>
-      </div>
-    </div>
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-content" data-aos="fade-up">
+    <h1>Unleash Your IT Potential with India’s Leading Mentor Platform</h1>
+    <div class="animated-text" id="typed-text"></div>
+    <p>RVNS Solutions delivers powerful career-focused training, project-based internships, and cutting-edge development to drive your success in tech and beyond.</p>
+    <a href="courses.html" class="btn-explore">Explore All Programs</a><pre>    </pre>
+    <a href="contact.html" class="btn-contact">Contact Us</a>
   </div>
 </section>
-
 
 <!-- Stats -->
 <section class="stats-section" data-aos="fade-up">
