@@ -368,21 +368,17 @@ if (isset($_POST['apply'])) {
 </main>
 
 
+<!-- Footer -->
 <footer class="footer-bg bg-dark text-light py-5" role="contentinfo" aria-label="Site Footer">
   <div class="container">
     <div class="row gy-4 justify-content-between">
       
-<div class="row align-items-center">
-  <div class="col-12 col-md-3 text-center text-md-start py-3">
-    <img src="logo1.jpg" alt="RVNS Solutions Logo"
-         class="img-fluid"
-         style="max-width:160px; width:100%; height:auto; margin-bottom:14px;" />
-    <p class="fst-italic text-light" style="font-size:1rem; max-width:260px; font-weight:500; opacity:0.85; margin:0;">
-      Empowering your IT journey with skills, projects, and innovation.
-    </p>
-  </div>
-  <!-- Other columns here -->
-
+      <div class="col-12 col-md-3 text-center text-md-start">
+        <img src="logo1.jpg" alt="RVNS Solutions" class="img-fluid mb-3" style="max-width: 160px;" />
+        <p class="fst-italic" style="max-width: 280px; margin: 0 auto 0 auto; font-size: 0.9rem;">
+          Empowering your IT journey with skills, projects, and innovation.
+        </p>
+      </div>
       
       <div class="col-6 col-md-2">
         <h5>Quick Links</h5>
@@ -395,12 +391,21 @@ if (isset($_POST['apply'])) {
         </ul>
       </div>
       
-      <div class="col-6 col-md-3 text-center text-md-start">
-        <h5>Contact Us</h5>
-        <p class="mb-1"><i class="bi bi-geo-alt-fill me-2"></i>Adoni, Andhra Pradesh, India</p>
-        <p class="mb-1"><i class="bi bi-telephone-fill me-2"></i><a href="tel:+918328051076" class="footer-link text-light text-decoration-none">+91 8328051076</a></p>
-        <p><i class="bi bi-envelope-fill me-2"></i><a href="mailto:rvnssolutions@gmail.com" class="footer-link text-light text-decoration-none">rvnssolutions@gmail.com</a></p>
-      </div>
+<div class="col-12 col-md-3 text-center text-md-start">
+  <h5>Contact Us</h5>
+  <p><i class="bi bi-geo-alt-fill me-2"></i>Adoni, Andhra Pradesh, India</p>
+  <p><i class="bi bi-telephone-fill me-2"></i>
+    <a href="tel:+918328051076" class="footer-link text-light text-decoration-none">+91 8328051076</a>
+  </p>
+  <p class="mb-0">
+    <i class="bi bi-envelope-fill me-2"></i>
+    <a href="mailto:rvnssolutions@gmail.com" class="footer-link text-light text-decoration-none"
+       style="word-break: break-all; white-space: normal;">
+      rvnssolutions@gmail.com
+    </a>
+  </p>
+</div>
+
       
       <div class="col-12 col-md-3 text-center text-md-start">
         <h5>Subscribe to Our Newsletter</h5>
@@ -408,7 +413,7 @@ if (isset($_POST['apply'])) {
           <input type="email" placeholder="Enter your email" required aria-label="Email" class="form-control mb-2 mb-sm-0 me-sm-2" />
           <button type="submit" class="btn btn-primary w-100 w-sm-auto px-4">Subscribe</button>
         </form>
-        <div class="social-icons mt-3 d-flex justify-content-center justify-content-md-start gap-3" style="font-size: 1.4rem;">
+        <div class="social-icons mt-3 d-flex justify-content-center justify-content-md-start gap-3" style="font-size: 1.2rem;">
           <a href="#" aria-label="Facebook" class="text-light"><i class="bi bi-facebook"></i></a>
           <a href="#" aria-label="Twitter" class="text-light"><i class="bi bi-twitter"></i></a>
           <a href="#" aria-label="Instagram" class="text-light"><i class="bi bi-instagram"></i></a>

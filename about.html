@@ -306,51 +306,7 @@
 <!-- Bootstrap 5 JS (required for toggler) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<style>
-  /* Navbar brand */
-  .navbar-brand {
-    font-family: 'Poppins', sans-serif;
-  }
 
-  /* Nav link styles */
-  .navbar-dark .navbar-nav .nav-link {
-    color: #16db93;
-    font-weight: 600;
-    padding: 0.45rem 0.75rem;
-    transition: color 0.3s ease;
-    letter-spacing: 0.04em;
-  }
-
-  .navbar-dark .navbar-nav .nav-link:hover,
-  .navbar-dark .navbar-nav .nav-link:focus {
-    color: #a7ffdb;
-    outline: none;
-  }
-
-  .navbar-dark .navbar-nav .nav-link.active {
-    color: #a7ffdb;
-    font-weight: 700;
-    border-bottom: 3px solid #16db93;
-    padding-bottom: 0.35rem;
-  }
-
-  /* Navbar toggler */
-  .navbar-dark .navbar-toggler-icon {
-    filter: invert(1);
-  }
-
-  /* Responsive font sizes */
-  @media (max-width: 576px) {
-    .navbar-brand {
-      font-size: 1.15rem;
-      letter-spacing: 0.02em;
-    }
-    .navbar-dark .navbar-nav .nav-link {
-      padding: 0.4rem 0.5rem;
-      font-size: 0.9rem;
-    }
-  }
-</style>
 
 <!-- Bootstrap 5 JS (required for toggler) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -446,20 +402,20 @@
   </section>
 </main>
 
-<footer class="footer-bg bg-dark text-light py-5" role="contentinfo" aria-label="Site Footer">
+<!-- Footer -->
+<footer class="footer-bg bg-dark text-light py-5" role="contentinfo" aria-label="Site Footer" style="background:#0a2239;">
   <div class="container">
     <div class="row gy-4 justify-content-between">
       
-<div class="row align-items-center">
-  <div class="col-12 col-md-3 text-center text-md-start py-3">
-    <img src="logo1.jpg" alt="RVNS Solutions Logo"
-         class="img-fluid"
-         style="max-width:160px; width:100%; height:auto; margin-bottom:14px;" />
-    <p class="fst-italic text-light" style="font-size:1rem; max-width:260px; font-weight:500; opacity:0.85; margin:0;">
-      Empowering your IT journey with skills, projects, and innovation.
-    </p>
-  </div>
+      <!-- Logo and tagline -->
+      <div class="col-12 col-md-3 text-center text-md-start">
+        <img src="logo1.jpg" alt="RVNS Solutions" class="img-fluid mb-3" style="max-width: 160px;" />
+        <p class="fst-italic" style="max-width: 280px; margin: 0 auto 0 auto; font-size: 0.96rem; color:#e0ecea;">
+          Empowering your IT journey with skills, projects, and innovation.
+        </p>
+      </div>
       
+      <!-- Quick Links -->
       <div class="col-6 col-md-2">
         <h5>Quick Links</h5>
         <ul class="list-unstyled lh-lg mb-0">
@@ -471,20 +427,34 @@
         </ul>
       </div>
       
-      <div class="col-6 col-md-3 text-center text-md-start">
+      <!-- Contact Us -->
+      <div class="col-12 col-md-3 text-center text-md-start">
         <h5>Contact Us</h5>
-        <p class="mb-1"><i class="bi bi-geo-alt-fill me-2"></i>Adoni, Andhra Pradesh, India</p>
-        <p class="mb-1"><i class="bi bi-telephone-fill me-2"></i><a href="tel:+918328051076" class="footer-link text-light text-decoration-none">+91 8328051076</a></p>
-        <p><i class="bi bi-envelope-fill me-2"></i><a href="mailto:rvnssolutions@gmail.com" class="footer-link text-light text-decoration-none">rvnssolutions@gmail.com</a></p>
+        <p style="color:#f8f9fa; margin-bottom: 8px;">
+          <i class="bi bi-geo-alt-fill me-2"></i>Adoni, Andhra Pradesh, India
+        </p>
+        <p style="color:#f8f9fa; margin-bottom: 8px;">
+          <i class="bi bi-telephone-fill me-2"></i>
+          <a href="tel:+918328051076" class="footer-link text-light text-decoration-none" style="word-break: break-all;">+91 8328051076</a>
+        </p>
+        <p style="color:#f8f9fa; margin-bottom: 0;">
+          <i class="bi bi-envelope-fill me-2"></i>
+          <a href="mailto:rvnssolutions@gmail.com"
+             class="footer-link text-light text-decoration-none"
+             style="word-break: break-all; white-space: normal; display: inline;">
+            rvnssolutions@gmail.com
+          </a>
+        </p>
       </div>
       
+      <!-- Newsletter + Socials -->
       <div class="col-12 col-md-3 text-center text-md-start">
         <h5>Subscribe to Our Newsletter</h5>
         <form onsubmit="event.preventDefault(); alert('Subscribed!');" class="d-flex flex-column flex-sm-row align-items-center" style="max-width: 320px; margin: auto;">
           <input type="email" placeholder="Enter your email" required aria-label="Email" class="form-control mb-2 mb-sm-0 me-sm-2" />
           <button type="submit" class="btn btn-primary w-100 w-sm-auto px-4">Subscribe</button>
         </form>
-        <div class="social-icons mt-3 d-flex justify-content-center justify-content-md-start gap-3" style="font-size: 1.4rem;">
+        <div class="social-icons mt-3 d-flex justify-content-center justify-content-md-start gap-3" style="font-size: 1.2rem;">
           <a href="#" aria-label="Facebook" class="text-light"><i class="bi bi-facebook"></i></a>
           <a href="#" aria-label="Twitter" class="text-light"><i class="bi bi-twitter"></i></a>
           <a href="#" aria-label="Instagram" class="text-light"><i class="bi bi-instagram"></i></a>
@@ -494,7 +464,7 @@
         </div>
       </div>
     </div>
-    <div class="text-center text-light small mt-4" style="opacity: 0.65;">
+    <div class="text-center small mt-4" style="opacity: 0.87; color:#e1ecea;">
       <a href="privacy.html" class="footer-link text-light text-decoration-none me-3">Privacy Policy</a>
       <a href="terms.html" class="footer-link text-light text-decoration-none">Terms of Service</a>
       <p class="mt-2 mb-0">© 2025 RVNS Solutions. All rights reserved.</p>
@@ -502,8 +472,9 @@
   </div>
 </footer>
 
-<!-- Bootstrap 5 JS bundle -->
+<!-- Bootstrap JS (for icons/controls) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
 
 
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
